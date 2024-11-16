@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button</title>
+</head>
+<style>
+    button{
+        padding:16px 40px ;
+        border: none;
+        cursor: pointer;
+        transition-duration: 0.4s;
+        font-size: 14px;
+        background-color: red;
+
+    }
+    .btn:hover{
+        background-color: green;
+        color: white;
+    }
+
+.btn1:hover{
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+.active:active{
+    transform: translateY(4px);
+    cursor: pointer;
+    box-shadow: 1in black;
+}
+</style>
+
+<body >
+    <button class="btn">Click me</button>
+    <button class="btn1">Disables</button>
+    <button class="active">Active</button>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Pagination</title>
+    <style>
+        div {
+            display: flex;
+            gap: 20px;
+            width: 100%;
+            height: 30px;
+            justify-content: start;
+            text-align: center;
+        }
+        div a {
+            text-decoration: none;
+            font-size: 20px;
+            color: black;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 100%;
+            transition: background-color 0.3s;
+        }
+        div a.active {
+            background-color: rgb(144, 38, 38);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Simple Pagination</h1>
+    <div id="pagination">
+        <a href="#">&laquo;</a>
+        <a href="#" class="page">1</a>
+        <a href="https://www.google.com/" class="page">2</a>
+        <a href="https://www.twitter.com/" class="page">3</a>
+        <a href="#" class="page">4</a>
+        <a href="#" class="page">5</a>
+        <a href="#" class="page">6</a>
+        <a href="#" class="page">7</a>
+        <a href="#">&raquo;</a>
+    </div>
+    <script>
+        // Get all the page links
+        const pageLinks = document.querySelectorAll('.page');
+
+        // Add click event listener to each page link
+        pageLinks.forEach(link => {
+            link.addEventListener('click', function(event) {
+                // Prevent the default link behavior
+                event.preventDefault();
+
+                // Remove the active class from all links
+                pageLinks.forEach(link => link.classList.remove('active'));
+
+                // Add the active class to the clicked link
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

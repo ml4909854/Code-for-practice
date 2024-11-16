@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>animation</title>
+</head>
+<style>
+    @keyframes example {
+        0%{background-color: red; left: 0px; top: 0px;}
+        25%{background-color: yellow; left: 300px; top:0px;}
+        50%{background-color: green; left: 300px; top:300px;}
+        75%{background-color: rgb(77, 19, 202); left: 0px; top:300px;}
+        100%{background-color: rgb(175, 33, 140); left: 0px; top:0px;}
+
+    }
+    div{
+        animation: example 4s ease 1s infinite alternate;
+        width: 100px;
+        height: 100px;
+        position: relative;
+        background-color: red;
+       
+    }
+
+</style>
+<body>
+    <div>
+
+    </div>
+</body>
+</html>
