@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pseudo-element</title>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/128/6422/6422213.png">
+</head>
+<style>
+    h1::first-letter{
+        font-size: 18px;
+        color: red;
+    }
+    .para::before{
+        content: url("https://cdn-icons-png.flaticon.com/128/6422/6422207.png");
+    }
+.heading::after{
+content: url("https://cdn-icons-png.flaticon.com/128/6422/6422207.png");
+}
+</style>
+<body>
+    <h1>This is a heading</h1>
+<p class="para">The ::after pseudo-element inserts content after the content of an element.</p>
+
+<h1 class="heading">This is a heading</h1>
+</body>
+</html>
