@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2D tranform</title>
+</head>
+<style>
+div{
+    background-color: yellow;
+    width: 400px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    border: 1px solid black;
+}
+
+/* now starts form a tranform */
+.tranform{
+    /* transform: translate(50px , 30px); it will be shifted by 30px from left and 20px form right */
+    /* transform: translateX(100px); translateX means it will be shifted towards the right side of 100px now you see the results on a screen */
+    /* transform: translateY(100px);  it will be 100px shifted form the top */
+    /* transform: translateX(-100px); it will be shilfted towards the left */
+    /* transform: translateY(-100px); it will shifted towards the top */
+}
+.skew{
+    /* transform: skew(30deg , 30degi); iw will be shifted 30deg from x axis to the 30def from the y axis  */
+    /* transform: skewX(30deg); it will be shifted form the x axis 30 deg */
+    /* transform: skewY(30deg);now it will be fixed towards the 20deg now move forwards on the next generations */
+    
+}
+.scale{
+    /* transform: scale(3  ,2);when i write a code like this in these code the width is 3 times increase of actual width and 2 times its height increases */
+    /* transform: scaleX(2);means 2 times its width increases */
+    /* transform: scaleY(5); means 5 times its height increased */
+   /* transform: scaleX(0.5);measn its witdht decrlease and similarly its height also decrease */
+   /* transform: scale(0.5 , 0.5); measns its width and the height both are decreases*/
+
+}
+.rotate{
+    /* transform: rotate(30deg); it is rotated 30deg from the x axis */
+   /* transform: rotate(-30deg);it is rotated minus 30deg */
+   /* transform: rotateX(303deg); it willl ratated deg in reverside chapter complete*/
+}
+</style>
+<body>
+    <div class="tranform">
+        tranform
+    </div>
+    <div class="skew">
+        skew
+    </div>
+    <div class="scale">
+        scale
+    </div>
+    <div class="rotate">
+        rotate
+    </div>
+</body>
+</html>
