@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function</title>
+</head>
+
+<body>
+    <script>
+
+        // function StudentName(name, age) {
+        //     return `Name: ${name} and Age: ${age}`
+        // }
+
+        // let x = StudentName("suresh", 14)
+        // console.log(x)
+
+        // function Tocelciud(faraenhit){
+        //     return (5/9) * (faraenhit-32)
+        // }
+        // let value = Tocelciud(5)
+        // console.log(value)
+
+
+        // Add two nubmers
+
+        function Sum(num1, num2) {
+            return num1 + num2
+        }
+        let totalsum = Sum(5, 8)
+        console.log(totalsum)
+
+        // check even or odd
+        function Check(num) {
+            if (num % 2 === 0) {
+                return "Even"
+            }
+            else {
+                return "Odd"
+            }
+        }
+
+        const CheckEven = Check(40)
+        console.log(CheckEven)
+        // check maximum
+        function Maximum(num1, num2) {
+            if (num1 && num2) {
+                if (num1 > num2) {
+                    return `num1 is greater`
+                }
+                else {
+                    return `num2 is greater`
+                }
+            }
+        }
+        const Max = Maximum(10, 55)
+        console.log(Max)
+        // check maximum
+        function maxi(num1, num2) {
+            return num1 + num2
+        }
+        const max = maxi(5, 8)
+        console.log("maximum :", max)
+
+        // check factorial
+        function factorial(n) {
+            if (n< 0) {
+                return "invalid numbers"
+            }
+            let result = 1
+            for (i = 1; i <= n; i++) {
+                result *= i
+            }
+            return result
+        }
+        console.log(factorial(5)); // Output: 120
+        console.log(factorial(0)); // Output: 1
+     
+        // check palindrome
+        
+        // function palindrome(name){
+        //  for(let i=0 ; i<=name-1; i++){
+        //     console.log(i)
+        //  }
+        // }
+        // const name = palindrome("mahesh")
+        // console.log(name)
+    </script>
+</body>
+
+</html>

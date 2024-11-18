@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constructor funtion</title>
+</head>
+<body>
+    <script>
+
+// sytanx of the ofcet const person = {}
+    // const person={
+    //     name:"mahesh",
+    //     lastname:"kumar"
+    // }
+    function ages(){
+        console.log("my name is ages")
+    }
+    ages()
+    // console.log(person)
+
+function Person(firstname , lastname , age , gender ,relation){
+    this.firstname = firstname,
+    this.lastname = lastname,
+    this.age = age,
+    this.gender = gender,
+    this.relation = relation
+    this.nationality = "indian"
+}
+
+Person.prototype.nationalism = "nationism"
+// 
+// add a method
+
+
+const Myfather = new Person("pratap" ,"lodhi" ,55 , "male" , "father")
+const myMother = new Person("hemlata" , "lodhi" , 44 , "female" , "mother") 
+const mySister = new Person("gayatri" , "lodhi" , 34 , "female" , "sister")
+const myBrother = new Person("Rohit" , "lodhi" , 52 , "male " , "Brohter"
+)
+const mySelf = new Person("Mahesh" , "Kumar" , 25 , "male" , "myselsf")
+
+// but we cannot add property in a construtor buyt add in a object
+// Myfather.love = "me"
+// myMother.dangerous = "for me"
+// // mySister.fight = "with me"
+// // but we can not add a property in a constructor we add a property in a construtor with the help of prototype
+// Myfather.fullname = function(){
+//     return this.firstname +" " + this.lastname
+// } 
+
+// myMother.fullname = function(){
+//     return this.firstname +" " + this.lastname
+// } 
+
+// mySister.fullname = function(){
+//     return this.firstname +" " + this.lastname
+// } 
+
+// myBrother.fullname = function(){
+//     return this.firstname +" " + this.lastname
+// } 
+
+// mySelf.fullname = function(){
+//     return this.firstname +" " + this.lastname
+// } 
+
+// add method with the help of the prototyp 
+
+// Person.prototype.chnagename = function(name){
+//     this.lastname = name
+// }
+// myMother.chnagename("sukumar")
+// console.log(myMother)
+// console.log(Myfather.fullname())
+// console.log(myMother.fullname())
+// console.log(mySister.fullname())
+// console.log(myBrother.fullname())
+// console.log(mySelf.fullname())
+
+
+// console.log(Myfather)
+// console.log(myMother)
+
+// console.log(myBrother)
+// console.log(mySister)
+// console.log(mySelf)
+
+
+    </script>
+</body>
+</html>
