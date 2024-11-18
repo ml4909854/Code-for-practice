@@ -9,82 +9,82 @@
     <script>
 
 
-// 1 Write a program to filter all even numbers from the array.
+1 Write a program to filter all even numbers from the array.
 
-// const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-// const filterNumbers = numbers.filter((num)=>num%2==0)
-// console.log(filterNumbers)
-
-
-// 2 Filter out all words with more than 5 characters
-
-// const words = ['tree', 'mountain', 'cat', 'sun', 'umbrella'];
-// const filterwords = words.filter((word)=>{
-//     if(word.length>=5){
-//         return word
-//     }
-// })
-// console.log(filterwords)
-
-// 3 From the given array of ages, filter out all ages below 18.
-
-// const ages = [12, 17, 22, 10, 30, 15, 18,  19];
-// const filterages = ages.filter(age=>{
-//     if(age>=18){
-//         return age
-//     }
-// })
-
-// console.log(filterages)
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const filterNumbers = numbers.filter((num)=>num%2==0)
+console.log(filterNumbers)
 
 
-//  4 Filter all positive numbers from the array.
+2 Filter out all words with more than 5 characters
 
-// const numbers = [-10, 5, -20, 30, 0, 15, -2];
-// const filternumbers = numbers.filter((num)=>{
-//     if(num>=0){
-//         return num
-//     }
-// })
-// console.log(filternumbers)
+const words = ['tree', 'mountain', 'cat', 'sun', 'umbrella'];
+const filterwords = words.filter((word)=>{
+    if(word.length>=5){
+        return word
+    }
+})
+console.log(filterwords)
 
+3 From the given array of ages, filter out all ages below 18.
 
-// 5 From the given array, filter out only the string elements.
-// const mixedArray = [1, 'apple', true, 'banana', 42, 'cherry'];
-// const filterArr = mixedArray.filter((mix)=>{
-// if(typeof(mix)==="string"){
-//     return mix
-// }
-// })
-// console.log(filterArr)
+const ages = [12, 17, 22, 10, 30, 15, 18,  19];
+const filterages = ages.filter(age=>{
+    if(age>=18){
+        return age
+    }
+})
 
-// 6. Filter out all students who scored more than 50 marks.
-
-// const students = [
-//   { name: 'Alice', marks: 45 },
-//   { name: 'Bob', marks: 55 },
-//   { name: 'Charlie', marks: 35 },
-//   { name: 'David', marks: 75 }
-// ];
-// const filtermark = students.filter((mark)=>{
-//     if(mark.marks>=50){
-//         return mark.marks
-//     }
-// })
-// console.log(filtermark)
+console.log(filterages)
 
 
-// 7 .Filter all names that start with the letter 'A'.
+ 4 Filter all positive numbers from the array.
 
-// const names = ['Alice', 'Bob', 'Amanda', 'Charlie', 'Anna'];
-// const filtername = names.filter((name)=>{
-//    if(name.startsWith("A")){
-//     return name
-//    }
-// })
-// console.log(filtername)
+const numbers = [-10, 5, -20, 30, 0, 15, -2];
+const filternumbers = numbers.filter((num)=>{
+    if(num>=0){
+        return num
+    }
+})
+console.log(filternumbers)
 
-//8 Filter all items that are in stock (stock > 0).
+
+5 From the given array, filter out only the string elements.
+const mixedArray = [1, 'apple', true, 'banana', 42, 'cherry'];
+const filterArr = mixedArray.filter((mix)=>{
+if(typeof(mix)==="string"){
+    return mix
+}
+})
+console.log(filterArr)
+
+6. Filter out all students who scored more than 50 marks.
+
+const students = [
+  { name: 'Alice', marks: 45 },
+  { name: 'Bob', marks: 55 },
+  { name: 'Charlie', marks: 35 },
+  { name: 'David', marks: 75 }
+];
+const filtermark = students.filter((mark)=>{
+    if(mark.marks>=50){
+        return mark.marks
+    }
+})
+console.log(filtermark)
+
+
+7 .Filter all names that start with the letter 'A'.
+
+const names = ['Alice', 'Bob', 'Amanda', 'Charlie', 'Anna'];
+const filtername = names.filter((name)=>{
+   if(name.startsWith("A")){
+    return name
+   }
+})
+console.log(filtername)
+
+8 Filter all items that are in stock (stock > 0).
 const items = [
   { name: 'Laptop', stock: 5 },
   { name: 'Phone', stock: 0 },
@@ -92,33 +92,33 @@ const items = [
   { name: 'Headphones', stock: 0 }
 ];
 
-// const filterItems = items.filter((item)=>{
-// if(item.stock>0){
-//     return item
-// }
-// })
-// console.log(filterItems)
+ const filterItems = items.filter((item)=>{
+if(item.stock>0){
+    return item
+}
+})
+console.log(filterItems)
 
-//  9 Filter all numbers from the array that are divisible by 3.
-// const numbers = [3, 5, 9, 12, 14, 15, 18, 22];
-// const filterNUM = numbers.filter((num)=>num%3===0)
-// console.log(filterNUM)
+ 9 Filter all numbers from the array that are divisible by 3.
+const numbers = [3, 5, 9, 12, 14, 15, 18, 22];
+const filterNUM = numbers.filter((num)=>num%3===0)
+console.log(filterNUM)
 
-//  10 Filter all products with a price less than $50.
+ 10 Filter all products with a price less than $50.
 
-// const products = [
-//   { name: 'Pen', price: 10 },
-//   { name: 'Notebook', price: 30 },
-//   { name: 'Backpack', price: 60 },
-//   { name: 'Shoes', price: 45 }
-// ];
+const products = [
+  { name: 'Pen', price: 10 },
+  { name: 'Notebook', price: 30 },
+  { name: 'Backpack', price: 60 },
+  { name: 'Shoes', price: 45 }
+];
 
-// const filterProduct = products.filter((pro)=>{
-// if(pro.price<50){
-//     return pro
-// }
-// })
-// console.log(filterProduct)
+const filterProduct = products.filter((pro)=>{
+if(pro.price<50){
+    return pro
+}
+})
+console.log(filterProduct)
 
 
 
