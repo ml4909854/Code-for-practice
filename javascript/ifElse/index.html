@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>If else</title>
+    <link rel="icon" href="https://img.icons8.com/?size=80&id=122835&format=png">
+</head>
+
+<body>
+    <script>
+
+        // write a program to check a given number even or odd
+        function Even(params) {
+            if (params % 2 === 0) {
+                return `${params} is even`
+            }
+            else {
+                return `${params} is odd`
+            }
+        }
+
+        const even = Even(15)
+        console.log(even)
+
+
+        // Determine if a number is positive, negative, or zero.
+
+        function checkNumber(num) {
+            if (num > 0) {
+                return "num is positive"
+            }
+            else if (num < 0) {
+                return "num is negative"
+            }
+            else {
+                return "num is zero"
+            }
+        }
+
+        const check = checkNumber(0)
+        console.log(check)
+
+
+
+        // Based on a student's marks, assign grades using the following ranges:
+
+        function studentMarks(marks) {
+            if (marks < 0) {
+                return "marks cannot be zero/negative"
+            }
+            if(marks>100){
+                return "marks cannot be greater than hundrend"
+            }
+            if (marks >= 90) {
+                return "grade A"
+            }
+            else if (marks >= 80) {
+                return "grade B"
+            }
+            else if (marks >= 70) {
+                return "grade C"
+            }
+            else if (marks >= 60) {
+                return "grade D"
+            }
+            else if (marks < 60) {
+                return "grade F"
+            }
+
+        }
+
+        const student = studentMarks(100)
+        console.log(student)
+
+
+
+function leapYear(days){
+    if(days===366){
+        return "this year is the leap year"
+    }
+    else if(365){
+        return "this year is not leap yer "
+    }
+}
+
+const leap  = leapYear(366)
+console.log(leap)
+
+
+    </script>
+</body>
+
+</html>
