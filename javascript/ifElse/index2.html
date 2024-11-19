@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>if else</title>
+</head>
+<body>
+    <script>
+
+// Find the maximum of two numbers entered by the user.
+function Maximum(num1 , num2){
+    if(num1>num2){
+        return "num 1 is greater"
+    }
+    else{
+        return "num 2 is greater"
+    }
+}
+
+const max = Maximum(22 , 33)
+console.log(max)
+
+
+// Check if a person is pass in exam (age ≥ 18).
+
+function eligiblity(age){
+if(age>=18){
+    return "pass in exam "
+}
+else{
+    return "not pass in exam "
+}
+}
+
+const vote = eligiblity(45)
+console.log(vote)
+
+
+// Determine whether a student passed (marks ≥ 40).
+function passExam(marks){
+if(marks>=40){
+    return "pass in exam "
+}
+else{
+    return "not pass in exam "
+}
+}
+
+const marks = passExam(45)
+console.log(marks)
+
+
+// Check if a number is divisible by both 5 and 11.
+
+function Checknumber(num){
+    if(num%5===0 && num%11===0){
+        return "num is divisible by both"
+    }
+    else{
+        return "num is not divisible by both"
+    }
+}
+
+const check = Checknumber(5)
+console.log(check)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
