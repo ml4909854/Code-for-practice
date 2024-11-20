@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>if else</title>
+</head>
+<body>
+    <script>
+
+// Check whether an input character is a vowel, consonant, digit, or special character.
+
+ function character(char){
+   if(char==="a" || char==="e" || char==="i" || char==="o" || char==="u"){
+    return "it a vowel"
+   }
+   if(typeof(char) === "number"){
+    return "it is a digit"
+   }
+   if(char==="!" || char==="@" || char==="#" || char==="$" || char==="%" || char==="^" || char==="&" || char ==="*"){
+    return "it is a speacia; cjar"
+   }
+   else{
+    return "it is consosnant"
+   }
+ }
+ const x = character("f")
+ console.log(x)
+
+
+//  Calculate the bill amount based on the units consumed:
+function Bill(first){
+    if(first <=100 || first >=0){
+        return "5 rupee unit"
+    }
+    if(first <=200){
+        return "7 rupee unit"
+    }
+    if(first >=100 ){
+        return "10 rupee unit"
+    }
+}
+const vill = Bill(150)
+console.log(vill)
+
+// Determine whether a given letter is uppercase or lowercase.
+
+function Alphabet(char){
+if(char === char.toLowerCase()){
+return "lower charracter"
+}
+else{
+   return "uppercase"
+}
+}
+
+const cas = Alphabet("")
+console.log(cas)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
