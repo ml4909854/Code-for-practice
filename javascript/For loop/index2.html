@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for loop 2</title>
+</head>
+
+<body>
+    <script>
+
+
+        // Print the reverse of a given string.
+
+        const string = "maheshkumar"
+        for (let i = string.length - 1; i >= 0; i--) {
+            console.log(string[i])
+        }
+
+
+        //Count the number of vowels in a given string.
+
+        let str = "maheshKumar"
+        let vowel = 0
+        // let consonant = 0
+        for (let i = 0; i < str.length; i++) {
+            if (str[i] === "a" || str[i] === "e" || str[i] === "i" || str[i] === "u" || str[i] === "u") {
+                vowel++
+            }
+            // else {
+            //     // consonant++
+            // }
+        }
+
+        console.log(vowel)
+        // console.log(consonant)
+
+        // Calculate the factorial of a given number using a for loop.
+
+        function calculatefactorial(number) {
+            if (number < 0) {
+                return "factorial is not a negtive numbers"
+            }
+            let factorial = 1
+            for (let i = 1; i <= number; i++) {
+                factorial *= i
+            }
+            return factorial;
+        }
+
+        const num = calculatefactorial(4)
+        console.log(num)
+
+
+        // Find the sum of all even numbers in a given range (e.g., 1 to 100).
+
+        function evenNumber(number) {
+            let total = 0;
+            for (let i = 1; i <= number; i++) {
+                if (i % 2 === 0) {
+                    total = total + i
+                }
+            }
+            console.log(total)
+
+        }
+        evenNumber(12)
+
+
+// Print numbers from 100 to 1 in reverse order.
+for(let i=100; i>=1; i--){
+    console.log(i)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
