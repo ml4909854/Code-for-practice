@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>if Else intermediate</title>
+</head>
+<body>
+    <script>
+
+        // If a number is even, check if it is greater than 50.
+
+function checkeven(num){
+if(num%2===0 && num>50){
+return "no is even and greter than 50"
+}
+else{
+    return "no is not even"
+}
+}
+const check = checkeven(56)
+console.log(check)
+
+// Take two numbers and an operator (+, -, *, /) as input, and calculate the result using if-else.
+
+function calculator(num1 , num2 , op){
+    if(op == "+"){
+        return num1 +num2
+    }
+    if(op == "*"){
+        return num1 *num2
+    }
+    if(op == "-"){
+        return num1 -num2
+    }
+    if(op == "/"){
+        return num1/num2
+    }
+
+}
+const cal = calculator(3 , 4 , "/")
+console.log(cal)
+
+
+// Categorize a person's age into groups like "Child," "Teenager," "Adult," or "Senior."
+
+// age group 
+function categorize(age){
+    if(age>=18){
+        return "adult"
+    }
+    if(age>=50){
+        return "senior"
+    }
+    if(age<18){
+        return "teenage"
+    }
+    if(age<=10){
+        return "child"
+    }
+    else if (age>100){
+        return "age is not greater than hundred"
+    }
+}
+const cat = categorize(45)
+console.log(cat)
+
+// Determine which quadrant a point (x, y) lies in.
+
+function quadrant(x , y){
+    if(x<0 && y<0){
+        return "it will lies -x , -y  quadrant"
+    }
+    if(x>0 && y>0){
+        return "it will lies x , y  quadrant"
+    }
+    if(x<0 && y>0){
+        return "it will lies -x , y  quadrant"
+    }
+    if(x>0 && y<0){
+        return "it will lies x , -y  quadrant"
+    }
+    if(x==0 && y==0){
+        return "it will lies center of the xy axis"
+    }
+}
+
+const qua = quadrant(0,0)
+console.log(qua)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
