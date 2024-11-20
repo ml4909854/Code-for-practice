@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for lopp 4</title>
+</head>
+<body>
+    <script>
+
+// Count the number of positive numbers in an array.
+
+let countarr = [-1,-2,-5,-7,-5,1,56,8,6,8,6,5,6]
+let count = 0;
+for(let i=0; i<countarr.length; i++){
+    if(countarr[i]>=1){
+        count++
+    }
+}
+
+console.log(count)
+
+// Print only the strings from a mixed array of numbers and strings.
+
+let mixedArray = [42, "hello", 3.14, "world", 100, "JavaScript"];
+
+for(let i=0; i<mixedArray.length; i++){
+    if(typeof mixedArray[i] ==="string"){
+        console.log(mixedArray[i])
+    }
+}
+
+// Print the index of each element in an array along with its value.
+let index = [1,0,2,6,8,6,8,9,4,6,3]
+for(let i = 0; i<index.length; i++){
+    console.log(`${index[i]} = ${i}`)
+}
+
+// Reverse the elements of an array using a for loop.
+let arr = []
+let reversearr = ["mahesh" , "sangeeta" , "surajyada"]
+for(let i=reversearr.length-1; i>=0; i--){
+    let reversedString = reversearr[i].split("").reverse().join("  ");
+   arr.push(reversedString)
+
+}
+console.log(arr)
+
+
+// Merge two arrays into one using a for loop.
+
+let onearray = ["mahesh " , "sangeeta"]
+let secondarr = ["lodhi" , "sujata"]
+
+for(let i =0; i<onearray.length ; i++){
+    secondarr.unshift(onearray[i])
+}
+console.log(secondarr)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
