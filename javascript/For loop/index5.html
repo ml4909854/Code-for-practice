@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for loop 5</title>
+</head>
+<body>
+    <script>
+
+// Print a right-angled triangle pattern using 
+ 
+for (let i=1; i<=5; i++){
+      let stars = ""
+    for (let j=1; j<=i; j++){
+       
+      stars  +="* "
+    }
+    console.log(stars)
+}
+
+
+let rows = 3; // Number of rows in the pyramid
+
+for (let i = 1; i <= rows; i++) {
+    let spaces = ''; // Initialize an empty string for spaces
+    let stars = '';  // Initialize an empty string for stars
+    
+    // Add leading spaces
+    for (let j = 1; j <= rows - i; j++) {
+        spaces += ' '; // Append a space
+    }
+    
+    // Add stars
+    for (let k = 1; k <= (2 * i - 1); k++) {
+        stars += '*'; // Append a star
+    }
+
+    console.log(spaces + stars); // Print spaces followed by stars
+}
+
+
+
+
+function printFibonacci(n) {
+    let a = 0, b = 1; // First two terms of Fibonacci sequence
+    let fibSequence = []; // Array to store the Fibonacci sequence
+
+    // Print the Fibonacci sequence
+    for (let i = 0; i < n; i++) {
+        fibSequence.push(a); // Add the current term to the array
+        let nextTerm = a + b; // Calculate the next term
+        a = b; // Update a to the previous b
+        b = nextTerm; // Update b to the new nextTerm
+    }
+
+    console.log(fibSequence.join(", ")); // Print the sequence as a comma-separated string
+}
+
+// Example usage:
+let n = 10; // Number of terms in the Fibonacci sequence
+printFibonacci(n);
+
+
+// Outer loop for numbers from 1 to 5
+// for (let i = 1; i <= 5; i++) {
+//     // Inner loop for multiplying each number from 1 to 5 with the current number in the outer loop
+//     for (let j = 1; j <= 5; j++) {
+//         // Print the multiplication of i and j
+//         process.stdout.write(`${i * j}\t`); // '\t' adds a tab space between the numbers
+//     }
+//     console.log(); // Move to the next line after printing each row
+// }
+
+// Print all prime numbers between 1 and 50 using a for loop.
+
+// Function to check if a number is prime
+// function isPrime(num) {
+//     if (num <= 1) return false; // Numbers less than or equal to 1 are not prime
+//     for (let i = 2; i <= Math.sqrt(num); i++) {
+//         if (num % i === 0) return false; // If divisible by any number other than 1 and itself, it's not prime
+//     }
+//     return true; // Otherwise, the number is prime
+// }
+
+// // Loop through numbers from 1 to 50
+// for (let i = 1; i <= 50; i++) {
+//     if (isPrime(i)) {
+//         console.log(i); // Print the prime number
+//     }
+// }
+
+
+function prime(num){
+    if (num <= 1) return "It is not a prime number"; 
+    for(let i =2 ; i<num; i++){
+        if(num%i===0){
+            return "It is not a prime number"
+        }
+       
+    }
+      return "It's a prime number"
+}
+const x = prime()
+console.log(x)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
