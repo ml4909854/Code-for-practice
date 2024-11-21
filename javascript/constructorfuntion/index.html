@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C F</title>
+</head>
+<body>
+    <script>
+
+function Car(brand, model, year) {
+    this.brand = brand;
+    this.model = model;
+    this.year = year;
+    this.displayDetails = function() {
+        console.log(`Car: ${this.brand}, Model: ${this.model}, Year: ${this.year}`);
+    };
+}
+
+const car1 = new Car("Toyota", "Camry", 2022);
+car1.displayDetails(); // Output: Car: Toyota, Model: Camry, Year: 2022
+
+
+
+
+function Animal(type, sound) {
+    this.type = type;
+    this.sound = sound;
+    this.makeSound = function() {
+        console.log(`${this.type} makes sound: ${this.sound}`);
+    };
+}
+
+const animal1 = new Animal("Dog", "Bark");
+animal1.makeSound(); // Output: Dog makes sound: Bark
+
+
+
+
+function BankAccount(accountHolderName, balance) {
+    this.accountHolderName = accountHolderName;
+    this.balance = balance;
+    this.deposit = function(amount) {
+        this.balance += amount;
+        console.log(`Deposited: ${amount}. New Balance: ${this.balance}`);
+    };
+    this.withdraw = function(amount) {
+        if (amount > this.balance) {
+            console.log("Insufficient Balance!");
+        } else {
+            this.balance -= amount;
+            console.log(`Withdrew: ${amount}. Remaining Balance: ${this.balance}`);
+        }
+    };
+}
+
+const account1 = new BankAccount("John Doe", 5000);
+account1.deposit(2000); // Output: Deposited: 2000. New Balance: 7000
+account1.withdraw(3000); // Output: Withdrew: 3000. Remaining Balance: 4000
+
+
+
+
+
+
+function Student(name, rollNumber, grades) {
+    this.name = name;
+    this.rollNumber = rollNumber;
+    this.grades = grades;
+    this.calculateAverage = function() {
+        const sum = this.grades.reduce((a, b) => a + b, 0);
+        const average = sum / this.grades.length;
+        console.log(`Student: ${this.name}, Average Grade: ${average}`);
+    };
+}
+
+const student1 = new Student("Alice", 101, [90, 85, 88]);
+student1.calculateAverage(); // Output: Student: Alice, Average Grade: 87.66666666666667
+
+
+function Rectangle(length, width) {
+    this.length = length;
+    this.width = width;
+    this.calculateArea = function() {
+        return this.length * this.width;
+    };
+    this.calculatePerimeter = function() {
+        return 2 * (this.length + this.width);
+    };
+}
+
+const rectangle1 = new Rectangle(10, 5);
+console.log(`Area: ${rectangle1.calculateArea()}`); // Output: Area: 50
+console.log(`Perimeter: ${rectangle1.calculatePerimeter()}`); // Output: Perimeter: 30
+
+
+
+
+function Book(title, author, publishedYear) {
+    this.title = title;
+    this.author = author;
+    this.publishedYear = publishedYear;
+    this.displayDetails = function() {
+        console.log(`Title: ${this.title}, Author: ${this.author}, Year: ${this.publishedYear}`);
+    };
+}
+
+const book1 = new Book("1984", "George Orwell", 1949);
+book1.displayDetails(); // Output: Title: 1984, Author: George Orwell, Year: 1949
+
+
+
+function Employee(name, position, salary) {
+    this.name = name;
+    this.position = position;
+    this.salary = salary;
+    this.incrementSalary = function(percentage) {
+        const increment = (this.salary * percentage) / 100;
+        this.salary += increment;
+        console.log(`Salary incremented by ${percentage}%. New Salary: ${this.salary}`);
+    };
+}
+
+const employee1 = new Employee("John", "Developer", 50000);
+employee1.incrementSalary(10); // Output: Salary incremented by 10%. New Salary: 55000
+
+
+
+function Circle(radius) {
+    this.radius = radius;
+    this.calculateCircumference = function() {
+        return 2 * Math.PI * this.radius;
+    };
+    this.calculateArea = function() {
+        return Math.PI * this.radius * this.radius;
+    };
+}
+
+const circle1 = new Circle(7);
+console.log(`Circumference: ${circle1.calculateCircumference()}`); // Output: Circumference: 43.982297150257104
+console.log(`Area: ${circle1.calculateArea()}`); // Output: Area: 153.93804002589985
+
+
+
+
+function Phone(brand, model, price) {
+    this.brand = brand;
+    this.model = model;
+    this.price = price;
+    this.applyDiscount = function(discount) {
+        this.price -= discount;
+        console.log(`Discount applied. New Price: ${this.price}`);
+    };
+}
+
+const phone1 = new Phone("Apple", "iPhone 14", 1000);
+phone1.applyDiscount(100); // Output: Discount applied. New Price: 900
+
+
+
+function Vehicle(type, fuelType, mileage) {
+    this.type = type;
+    this.fuelType = fuelType;
+    this.mileage = mileage;
+    this.displayDetails = function() {
+        console.log(`Type: ${this.type}, Fuel: ${this.fuelType}, Mileage: ${this.mileage} km/l`);
+    };
+}
+
+const car = new Vehicle("Car", "Petrol", 15);
+const bike = new Vehicle("Bike", "Petrol", 50);
+const truck = new Vehicle("Truck", "Diesel", 8);
+
+car.displayDetails(); // Output: Type: Car, Fuel: Petrol, Mileage: 15 km/l
+bike.displayDetails(); // Output: Type: Bike, Fuel: Petrol, Mileage: 50 km/l
+truck.displayDetails(); // Output: Type: Truck, Fuel: Diesel, Mileage: 8 km/l
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
