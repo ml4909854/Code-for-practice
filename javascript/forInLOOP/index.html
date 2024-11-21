@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for in loops</title>
+</head>
+
+<body>
+    <script>
+        // 1. Iterating Over an Object
+        // 
+        const person = {
+            name: "John",
+            age: 30,
+            profession: "Engineer"
+        };
+
+        for (let key in person) {
+            console.log(`${key} : ${person[key]}`)
+        }
+
+
+        // Iterating Over an Array
+
+        const fruits = ["Apple", "Banana", "Cherry"];
+        for (let index in fruits) {
+            console.log(index, fruits[index])
+        }
+
+
+        // Adding Custom Properties to an Array
+        const colors = ["Red", "Blue", "Green"];
+        colors.push = "CustomProperty";
+        for (let key in colors) {
+            console.log(key, colors[key])
+        }
+        // terating Over Nested Objects
+
+        const student = {
+            name: "Alice",
+            marks: {
+                math: 90,
+                science: 85
+            }
+        };
+        for (let key in student) {
+            if (typeof student[key] === "object") {
+                for (let subKey in student[key]) {
+                    console.log(`${subKey}: ${student[key][subKey]}`);
+                }
+            }
+            else {
+                console.log(`${key}: ${student[key]}`);
+            }
+
+
+        }
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
