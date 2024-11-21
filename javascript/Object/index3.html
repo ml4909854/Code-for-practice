@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>object</title>
+</head>
+
+<body>
+
+    <script>
+
+        let book = {
+            title: "ramayan",
+            author: "tulsidaas",
+            year: 1222,
+            pages: 522,
+            getBookInfo: function () {
+                return `${this.title} :  ${this.author} : ${this.year} : ${this.pages}`
+            }
+        };
+        let x = book.getBookInfo()
+        console.log(x)
+
+        let user = {
+            username: "mahesh",
+            email: "ml@gmai.com",
+            isLoggedIn: true,
+            checkLoginStatus: function () {
+                if (this.isLoggedIn) {
+                    return "user logged in"
+                }
+                else {
+                    return "user logged out"
+                }
+            }
+        };
+
+        console.log(user.checkLoginStatus())
+
+        //           kkkkkkkkk
+
+
+        let movie = {
+            title: "animal",
+            director: "sandip reddy banga",
+            year: 2024,
+            rating: 10,
+            getDescription: function () {
+                return `${this.title} ; ${this.director} ; ${this.year} ; ${this.rating}`
+            }
+        };
+
+        let shoppingCart = {
+            items: [
+                { name: "Item 1", price: 100 },
+                { name: "Item 2", price: 150 },
+                { name: "Item 3", price: 200 }
+            ],
+            calculateTotal: function () {
+                let totalprice = 0;
+
+                for (let i = 0; i < this.items.length; i++) {
+                    totalprice = totalprice + this.items[i].price
+
+                }
+
+                return totalprice
+            }
+        };
+        console.log(shoppingCart.calculateTotal())
+
+
+        let car = {
+            make: "Toyota",
+            model: "Camry",
+            year: 2020,
+            price: 30000,
+            getDiscountedPrice: function (discount) {
+                // Calculate the discount amount
+                let discountAmount = (this.price * discount) / 100;
+
+                // Subtract the discount amount from the original price to get the discounted price
+                let discountedPrice = this.price - discountAmount;
+
+                // Return the discounted price
+                return discountedPrice;
+            }
+        };
+
+        // Example usage
+        let discount = 10; // 10% discount
+        console.log("Original Price: $" + car.price); // Output: Original Price: $30000
+        console.log("Discounted Price: $" + car.getDiscountedPrice(discount)); // Output: Discounted Price: $27000
+
+
+
+
+
+
+
+        let bankAccount = {
+            accountHolder: "John Doe",
+            balance: 1000, // initia; balace
+            acoountnumbe: "12sdf3sdf",
+            deposit: function (amount) {
+                return this.balance += amount
+            },
+            withdraw: function (amount) {
+                if (amount > 0 && amount <= this.balance) {
+                    this.balance -= amount; // Deduct amount from the balance
+                    console.log(`Withdrew: $${amount}. New balance: $${this.balance}`);
+                } else if (amount > this.balance) {
+                    console.log("Insufficient balance.");
+                } else {
+                    console.log("Withdrawal amount must be greater than zero.");
+                }
+            },
+            getBalance: function () {
+                console.log(`Current balance: $${this.balance}`);
+                return this.balance;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
