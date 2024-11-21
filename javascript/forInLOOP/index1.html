@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for in 2</title>
+</head>
+<body>
+    <script>
+
+
+const student = {
+    name: "John",
+    age: 20,
+    marks: 85
+};
+for (let key in student){
+    console.log(`${key}: ${student[key]}`)
+}
+
+const studentDetails = {
+    name: "Alice",
+    age: 21,
+    marks: {
+        math: 95,
+        science: 89
+    }
+};
+
+
+
+
+
+for (let key in studentDetails){
+    if(typeof studentDetails[key] ==="object"){
+        for (let subkey in studentDetails[key]){
+            console.log(`${subkey}:${studentDetails[key][subkey]}`)
+        }
+    }
+else{
+    console.log(`${key}: ${studentDetails[key]}`)
+}
+}
+
+
+// Count the Number of Properties in an Object Using for...in
+
+const person = {
+    name: "John",
+    age: 30,
+    country: "USA",
+    job: "Engineer"
+};
+
+let count = 0
+for(let key in person){
+count++
+
+}
+console.log(count)
+
+//  Create an Array of Numbers and Print the Indices and Their Values Using for...in
+
+const numbers = [10, 20, 30, 40, 50];
+for(let index in numbers){
+    console.log(`${index}  :  ${numbers[index]}`)
+}
+
+// 5. List All Enumerable Properties (Keys) of an Object
+
+ const persons = {
+    name: "Alice",
+    age: 25,
+    profession: "Developer",
+    greet: function() { console.log("Hello!"); }
+};
+
+for(let key in persons){
+    if(typeof persons[key] === "object"){
+        for(let subkey in persons[key]){
+        console.log(subkey , person[key][subkey])
+    }
+    }
+    else{
+        console.log(key , persons[key])
+    }
+}
+
+// Create an Object with Nested Objects and Use for...in to Iterate Over the Nested Properties
+
+const studentInfo = {
+    name: "Bob",
+    details: {
+        age: 22,
+        marks: {
+            math: 90,
+            science: 85
+        }
+    }
+};
+
+for(let key in studentInfo){
+
+    if(typeof studentInfo[key] ==="object"){
+        for(let subkey in studentInfo[key]){
+            if( typeof studentInfo[key][subkey] === "object"){
+                  for(let subsubkey in studentInfo[key][subkey]){
+                    console.log(subsubkey , studentInfo[key][subkey][subsubkey])
+                  }
+            }
+            else{
+                console.log(subkey , studentInfo[key][subkey])
+            }
+        }
+    }
+    else{
+        console.log(key , studentInfo[key])
+    }
+}
+
+
+
+
+// 7. Print Only the Keys of an Object Using for...in
+
+const car = {
+    make: "Toyota",
+    model: "Corolla",
+    year: 2020
+};
+for(let key in car){
+    console.log(key)
+}
+
+
+// . Add Custom Properties to an Array and Use for...in to Display All Keys and Values
+
+const colors = ["Red", "Blue", "Green"];
+colors.favorite = "Blue";
+colors.secondary = "Green";
+
+for(let index in colors){
+    console.log(index , colors[index])
+}
+
+
+// Find the Longest Key Name in an Object Using for...in
+
+const animal = {
+    cat: "Mammal",
+    elephant: "Mammal",
+    tiger: "Mammal",
+    whale: "Mammal"
+};
+let longestKy = ""
+
+for(let key in animal){
+   if(key.length >longestKy.length){
+    longestKy = key
+   }
+}
+console.log(longestKy)
+
+
+// Use for...in to Iterate Over an Object and Calculate the Sum of All Numeric Values in the Object
+
+
+const salaries = {
+    John: 3000,
+    Alice: 4000,
+    Bob: 2500
+};
+
+let totalSalray = 0;
+for(let key in salaries){
+   totalSalray +=salaries[key]
+}
+
+console.log(totalSalray)
+
+
+
+
+
+    </script>
+</body>
+</html>
