@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>function
+    </title>
+</head>
+
+<body>
+    <script>
+
+        // Write a function that finds the second largest number in an array.
+        function largest(arr) {
+            let newArr = arr.sort()
+            for (let i = 0; i < newArr.length; i++) {
+                console.log(newArr[newArr.length - 2])
+            }
+        }
+
+        largest([1, 3, 2, 5, 4])
+
+        //  Write a function to convert a string to lowercase.
+
+        function lowercase() {
+
+        }
+
+        // Write a function that checks if a word is a palindrome.
+        function palindrome(str) {
+            let newStr = ""
+            for (let i = str.length - 1; i >= 0; i--) {
+                newStr = newStr + str[i]
+            }
+            if (newStr === str) {
+                console.log("it is palindorme")
+            }
+            else {
+                console.log("not palindorm")
+            }
+        }
+        palindrome("sudhakaar")
+
+
+        // merger two arrus
+        function merges(arr1, arr2) {
+            for (let i = 0; i < arr2.length; i++) {
+                arr1.push(arr2[i])
+            }
+            console.log(arr1)
+        }
+        merges([1, 2, 3], [4, 5, 6])
+
+
+        //  Write a function that filters out all the non-numeric values from an array.
+        function filter(str) {
+            let newarr = []
+            for (let i = 0; i <= str.length; i++) {
+                if (typeof str[i] === 'string') {
+                    newarr.push(str[i])
+                }
+            }
+            console.log(newarr)
+        }
+        filter([1, 'a', 2, 'b', 3])
+
+        // 18. Write a function that takes an object and returns an array of all its keys.
+
+        function keys(obj) {
+            let arr = []
+            for (let key in obj) {
+                arr.push(key)
+            }
+            console.log(arr)
+
+        }
+        keys({ name: "John", age: 30, city: "New York" })
+
+
+
+        // Write a function that calculates the average of an array of numbers.\
+
+        function Averages(arr) {
+            let totalsum = 0;
+            for (let sum of arr) {
+                totalsum = totalsum + sum
+            }
+            let average = totalsum/arr.length
+            console.log(average)
+            
+        }
+        Averages([1, 2, 3, 4, 5])
+
+
+        // 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
