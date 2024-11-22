@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class</title>
+</head>
+<body>
+    
+
+    <script>
+
+class Person {
+    constructor(firstname , lastname , gender , nationality){
+this.firstname = firstname
+this.lastname = lastname 
+this.gender = gender 
+this.nationality = nationality
+    }
+}
+
+const myself = new Person("mahesh" , "lodhi" , "male" , "Indian")
+const father = new Person("pratap"  , "singh" , "lodhi"  , "indian")
+
+console.log(myself)
+console.log(father)
+
+
+class Car{
+    constructor(firstname , lastname , year){
+        this.firstname = firstname
+        this.lastname = lastname 
+        this.year = year
+    }
+    greet(){
+        const date = new Date()
+        return date.getFullYear() - this.year
+    }
+}
+
+const my = new Car("mahesh" , "kumar" , 2002)
+console.log(my.greet())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
