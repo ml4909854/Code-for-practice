@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clousers</title>
+</head>
+<body>
+    <script>
+
+// 
+
+
+
+
+
+function outerFunction() {
+  let outerVar = "I am from the outer scope";
+
+  function innerFunction() {
+    console.log(outerVar); // Inner function accesses outerVar
+  }
+
+  innerFunction();
+}
+
+outerFunction(); // Output: "I am from the outer scope"
+
+//  here inner funtion have acess to outerVar because of the lexical scoping
+
+
+function Outer(){
+    let counter = 0
+    return function inner(){
+        return counter+=1
+    }
+   
+}
+
+const counter = Outer()
+console.log(counter())
+console.log(counter())
+console.log(counter())
+console.log(counter())
+console.log(counter())
+console.log(counter())
+console.log(counter())
+console.log(counter())
+console.log(counter())
+console.log(counter())
+console.log(counter())
+console.log(counter())
+console.log(counter())
+console.log(counter())
+console.log(counter())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

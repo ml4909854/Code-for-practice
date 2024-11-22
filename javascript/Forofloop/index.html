@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for of loop</title>
+</head>
+<body>
+    <script>
+
+// for (let variable of iterable) {
+//     // code block to be executed
+// }
+
+// Example 1: Iterating Over an Array
+const numbers = [1,2,3,5,6,7,8,9]
+
+for (let number of numbers){
+    console.log(number)
+}
+
+
+
+// Example 2: Iterating Over a Strin
+
+const str = "mahesh"
+for(let char of str){
+    console.log(char) // character should be print when i write the kind of the code
+}
+
+// iterating overa a map
+
+const products = [
+    { name: "Product 1", price: 100 },
+    { name: "Product 2", price: 200 },
+    { name: "Product 3", price: 300 }
+];
+for(let product of products){
+    console.log(product.name)
+    console.log(product.price)
+}
+for(let key in products){
+    console.log(products[key].name)
+}
+console.log(products.name)
+
+
+// Square the Numbers in an Array:
+const numberss = [1, 2, 3, 4, 5];
+let arr = []
+for(let number of numbers){
+  arr.push(number*number)
+}
+console.log(arr)
+
+// revers a sting
+let string = "mahesh"
+let rev = ""
+for(let char of string){
+    rev = char+rev
+}
+console.log(rev)
+
+
+// Sum the Elements in an Array:
+const nums = [1, 2, 3, 4, 5];
+let sum = 0
+for(let num of nums){
+    sum  = sum+num
+}
+console.log(sum)
+// Iterate over an array of numbers and print their squares.
+const numbs = [1, 2, 3, 4, 5];
+for(let num of numbs){
+    console.log(num*num)
+}
+
+
+// Reverse a string using a for...of loop.
+let strr = "hello";
+let rever = ""
+for(let char of str){
+    rever = char+str
+}
+
+console.log(rever)
+
+// Count the occurrences of a specific character in a string
+
+let  st = "programming";
+let char = 'g';
+let count = 0;
+for(let str of st){
+    if(str === char){
+        count = count+1
+    }
+}
+console.log(count)
+
+
+// Find the longest word in an array of words.
+const words = ["apple", "banana", "grapefruit", "orange"];
+let longest = ""
+for(let word of words){
+    if(word.length>longest.length){
+        longest = word
+    }
+}
+console.log(longest)
+
+// Flatten a nested array using for...of.
+
+const nestedArray = [1, [2, 3], [4, [5, 6]], 7];
+for(let nest of nestedArray){
+    console.log(nest)
+}
+
+
+const students = [
+    { name: "John", age: 20, grade: "A" },
+    { name: "Alice", age: 22, grade: "B" },
+    { name: "Bob", age: 21, grade: "C" }
+];
+for(let student of students){
+    console.log(student.name)
+    console.log(student.age)
+    console.log(student.grade)
+}
+
+// Calculate the total length of strings in an array.
+const strings = ["apple", "banana", "cherry"];
+let countt = 1;
+for(let str of string){
+countt = countt +1
+}
+console.log(countt)
+
+// 
+const mixedArray = [1, "apple", 3, "banana", 5, "cherry"];
+
+
+for(let mix of mixedArray){
+    if(typeof mix === "string"){
+console.log(mix)
+    }
+}
+// Add all even numbers in an array and print the result.
+
+
+const numbersss = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+let sums =0;
+for(let num of numbersss){
+    if(num%2===0){
+        sums = sums+num
+    }
+}
+console.log(sums)
+
+const stringds = ["apple", "banana", "cherry"];
+let totalLength = 0;
+for (let str of strings) {
+    totalLength += str.length;
+}
+console.log(totalLength);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
