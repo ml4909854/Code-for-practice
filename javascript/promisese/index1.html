@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promises</title>
+</head>
+
+<body>
+    <script>
+
+        // Create a Promise that resolves with the string "Success" after 2 seconds.
+
+        setTimeout(() => {
+            let mypromise = new Promise((resolve, reject) => {
+                let sucess = true
+                if (sucess) {
+                    resolve("success")
+                } else {
+                    reject("unsucess")
+                }
+            }).then((result) => {
+                console.log(result)
+            }).catch(error => {
+                console.log(error)
+            })
+        }, 2000);
+
+
+        setTimeout(() => {
+            let mypromise = new Promise((resolve, reject) => {
+                let sucess = false
+                if (sucess) {
+                    resolve("success")
+                } else {
+                    reject("Something went Wrong!")
+                }
+            }).then((result) => {
+                console.log(result)
+            }).catch(error => {
+                console.log(error)
+            })
+        }, 3000);
+
+
+// chain promises
+
+let step1 = new Promise((resolve)=>{
+    setTimeout(() => {
+        resolve("step1 is completed")
+    }, 1000);
+}).then(result=>{
+    console.log(result)
+
+    return new Promise((resolve)=>{
+        setTimeout(() => {
+            resolve("step2 is completed")
+        }, 1000);
+    }).then(result=>{
+        console.log(result)
+    })
+})
+
+
+// promise.all
+// const task1 = new Promise((resovle)=>{
+//     setTimeout(() => {
+//         resovle("task1 is completed")
+//     }, 1000);
+// })
+
+// const task2 = new Promise((resolve)=>{
+//     setTimeout(() => {
+//         console.log("task2 is completed")
+//     }, 1000);
+// })
+
+// Promise.all([task1 , task]).then((result)=>{
+//     console.log(result[0])
+//     console.log(result[1])
+// }).catch(error=>{
+//     console.log(result)
+// })
+
+// Create a Promise that resolves with "Task 1 completed" after 1 second
+// const task1 = new Promise((resolve) => {
+//     setTimeout(() => {
+//         resolve("Task 1 completed");
+//     }, 1000); // Resolves after 1 second
+// });
+
+// Create a Promise that resolves with "Task 2 completed" after 2 seconds
+// const task2 = new Promise((resolve) => {
+//     setTimeout(() => {
+//         resolve("Task 2 completed");
+//     }, 2000); // Resolves after 2 seconds
+// });
+
+// // Use Promise.race() to log the result of the first promise that resolves
+// Promise.race([task1, task2])
+//     .then(result => {
+//         console.log(result); // This will log the result of the first promise to resolve
+//     })
+//     .catch(error => {
+//         console.error(error); // In case of any promise rejection
+//     });
+
+
+// let mypromise1 = new Promise((resolve , reject)=>{
+//     setTimeout(() => {
+//         resolve("console.log(jjs)")
+//     }, 3000);
+
+// })
+
+
+const task = new Promise((resolve)=>{
+    setTimeout(() => {
+        resolve("task completed after 3 seocnds")
+    }, 3000);
+})
+
+const timeout = new Promise((_, reject)=>{
+    setTimeout(() => {
+        reject("task timed out after 2 seconds")
+    }, 2000);
+})
+
+Promise.race([task , timeout]).then(result=>{
+    console.log(result)
+}).catch(error=>{
+    console.log(error)
+})
+
+
+
+
+
+    </script>
+</body>
+
+</html>
