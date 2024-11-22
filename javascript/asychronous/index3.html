@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interval</title>
+</head>
+
+<body>
+    <script>
+
+        function AutoSave() {
+
+            let inetvar = setInterval(() => {
+                console.log("document saved")
+            }, 2000);
+
+            setTimeout(() => {
+                clearInterval(inetvar)
+            }, 6000);
+        }
+        AutoSave()
+
+
+        // problet - delayed execution chain
+
+        // function Delayed() {
+        //     for (let i = 0; i <= 4; i++) {
+        //         if (i) {
+        //             setInterval(() => {
+        //                 console.log(i)
+        //             }, 1000);
+        //             setTimeout(() => {
+        //                 clearInterval(delayInternal)
+        //             }, 5000);
+        //         }
+        //     }
+
+
+
+        // }
+
+
+        // Delayed()
+
+
+        function displayNumbers() {
+            for (let i = 1; i <= 5; i++) {
+                setTimeout(() => {
+                    console.log(i);
+                }, i * 1000); // Delay is `i * 1000` milliseconds
+            }
+        }
+
+        displayNumbers();
+
+
+        function Clock() {
+
+            setInterval(() => {
+                const now = new Date()
+
+                // extract hours and minutes and speech
+
+                let hours = now.getHours()
+                let minutes = now.getMinutes()
+                let second = now.getSeconds()
+
+
+                hours = hours < 10 ? "0" + hours : hours;
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                second = second < 10 ? "0" + second : second
+
+                const time = `${hours}:${minutes}:${second}`
+                console.clear()
+                console.log(time)
+            }, 1000);
+        }
+        Clock()
+
+
+        // Traffic Light System
+
+        // function Traffic() {
+        //     let redinterval=  setInterval(() => {
+        //         console.log("red")
+            
+        //         setInterval(() => {
+        //             console.log("yellow")
+        //             setInterval(() => {
+        //                 console.log("red")
+        //             }, 5000);
+        //         }, 2000);
+        //     }, 5000);
+
+        
+        // }
+        // Traffic()
+
+
+
+//         function simpleAnimation() {
+//     let count = 0; // Tracks the number of dots logged
+//     const maxDots = 10; // Total number of dots to log
+
+//     // Start the interval
+//     const intervalId = setInterval(() => {
+//         process.stdout.write('.'); // Print a dot without a newline
+//         count++; // Increment the dot counter
+
+//         if (count === maxDots) {
+//             clearInterval(intervalId); // Stop the animation after 10 dots
+//             console.log("\nAnimation Complete!"); // Display the completion message
+//         }
+//     }, 500); // Log a dot every 500 milliseconds
+// }
+
+// simpleAnimation();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
