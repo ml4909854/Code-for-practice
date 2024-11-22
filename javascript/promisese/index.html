@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promises</title>
+</head>
+
+<body>
+    <div id="para"></div>
+    <script>
+
+        // A promise represent a value that might be avaiable now later or never. its wau to handle asynchrous operation in a more mangeable way than using callback
+
+
+
+
+
+        const mypromise = new Promise((resolve, reject) => {
+            let success = true
+            if (success) {
+                resolve("usere logged succesffully")
+            }
+            else {
+                reject("user logout succesfully")
+            }
+        }).then(result => {
+            console.log(result)
+        }).catch(error => {
+            console.log(error)
+        })
+
+
+
+
+        // const promise = new Promise((resolve , reject)=>{
+        //     let user = "mahesh"
+        //     if(user === "sita"){
+        // resolve("user correct")
+        //     }
+        //     else{
+        //         reject("user incrorect")
+        //     }
+        // }).then(result =>{
+        //     console.log(result)
+        // }).catch(error=>{
+        //     console.log(error)
+        // })
+        let para = document.getElementById("para")
+
+        function FetchData() {
+            let fetchdata = fetch("https://fakestoreapi.com/products")
+                .then(response => {
+                    return response.json()
+                }).then(data => {
+                    showdata(data)
+                })
+        }
+        function showdata(data) {
+
+            data.forEach(element => {
+                console.log(element)
+                let h1 = document.createElement("h1")
+                h1.innerHTML = element.title
+                let p = document.createElement("p")
+                p.innerHTML = element.description
+
+                para.append(h1, p)
+            });
+        }
+
+
+        FetchData()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
