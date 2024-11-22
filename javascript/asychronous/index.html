@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>asynchronous programming</title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <h1 id="demo">
+
+    </h1>
+    <script>
+
+        let counter = document.getElementById("demo")
+        function greeting(name) {
+            setTimeout(() => {
+                console.log(`Hello ${name}`)
+            }, 3000);
+        }
+        greeting("mahesh")
+
+
+
+        // countdown timer
+
+        function Countdown(number) {
+            let intervalid = setInterval(() => {
+                if (number >= 0) {
+                    counter.innerHTML = number--
+                    if (number < 0) {
+                        counter.innerHTML = "times up"
+                    }
+                } else {
+                    console.log("time end")
+                    clearInterval(intervalid)
+                }
+
+            }, 1000);
+        }
+        Countdown(5)
+
+
+        // Reminder Notification
+
+
+        function Reminder() {
+            let intervalId = setTimeout(() => {
+                alert("hello reminder")
+            }, 5000)
+
+            // clearInterval(intervalId
+        }
+        Reminder()
+
+        // Rotating Banner
+
+        function Banner(arr) {
+            let index = 0
+            const bannerValid = setInterval(() => {
+                console.clear()
+                console.log(arr[index])
+                index = (index + 1) % arr.length
+
+            }, 3000);
+        }
+
+        Banner(["sale 50% off!", "New Arrivals!", "Free shipping!!"])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
