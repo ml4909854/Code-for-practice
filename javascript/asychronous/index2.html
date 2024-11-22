@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <style>
+        .slider {
+            width: 1200px;
+            height: 300px;
+         top: 50px;
+            overflow: hidden;
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid #ccc;
+            position: relative;
+        padding: 5px;
+        
+           box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+            border: 1px solid black;
+            object-fit: cover;
+            display: none;
+             /* Hide all images initially */
+        }
+        img.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="slider">
+    <img src="https://images.pexels.com/photos/709552/pexels-photo-709552.jpeg?auto=compress&cs=tinysrgb&w=400" class="active" alt="Sale 50% Off!">
+    <img src="https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?auto=compress&cs=tinysrgb&w=400" alt="New Arrivals!">
+    <img src="https://images.pexels.com/photos/462162/pexels-photo-462162.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Free Shipping!">
+</div>
+
+<script>
+const banners = document.querySelectorAll(".slider img"); // Select all images in the slider
+let index = 0; // To track the current image
+
+// Set an interval to rotate images every 3 seconds
+const intervalId = setInterval(() => {
+    banners[index].classList.remove("active"); // Hide the current image
+    index = (index + 1) % banners.length; // Move to the next image, cycling back to the start
+    banners[index].classList.add("active"); // Show the next image
+}, 3000);
+
+</script>
+
+</body>
+</html>
