@@ -1,38 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>async await in detail </title>
 </head>
+
 <body>
     <script>
 
-// Simulating a task using a Promise
-function fetchData() {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve("Data fetched successfully!");
-        }, 2000); // Simulate a 2-second delay
-    });
-}
-
-// Using async and await
-async function fetchDataAsync() {
-    console.log("Fetching data...");
-    const result = await fetchData(); // Wait for the promise to resolve
-    console.log(result); // Logs: "Data fetched successfully!" after 2 seconds
-}
-
-fetchDataAsync();
+        // Simulating a task using a Promise
+        async function myDisplay() {
+            let mypromise = new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve("i love you!")
+                }, 5000);
+            })
+            let data = await mypromise
+            console.log(data)
+        }
+        myDisplay()
 
 
 
 
 
-
-
-
+        async function myOpinion() {
+            let promise = new Promise((resolve, reject) => {
+                let sucess = true
+                if (sucess) {
+                    resolve("login successful")
+                }
+                else {
+                    reject("logout successful")
+                }
+            })
+           console.log( await promise)
+        }
+myOpinion()
 
 
 
@@ -61,4 +67,5 @@ fetchDataAsync();
 
     </script>
 </body>
+
 </html>
