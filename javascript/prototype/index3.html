@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>protoytpe #</title>
+</head>
+<body>
+    <script>
+// Object.assign(target, source)
+// the object.assign() method copeit properties from one or more source objects to a traget object
+
+const Person1 = {
+    firstname : "John",
+    lastname:"Doe",
+    age:50, 
+    eyecolor:"blue"
+}
+
+// create a source object 
+const Person2 = {firstname:"mahesh" , lastname :"kumar"}
+
+// Assign Source to Target
+Object.assign(Person1, Person2);
+
+console.log(Person1)
+// console.log(Person2)
+
+
+//  object .entiteis 
+// object.entried return an array of the key/value pairs in an object
+
+const person = {
+    firstname : "mahesh" , 
+    lastname :'lodhi',
+    gender:"male"
+
+}
+let text = Object.entries(person)
+let text2 = Object.keys(person)
+let text3  = Object.values(person)
+console.log(text)
+console.log(text2)
+console.log(text3)
+
+
+// object.create 
+const animal = {
+    type:"animal", 
+    sound(){
+        console.log(`${this.name} makes a sound.`)
+    }
+}
+const dog = Object.create(animal)
+dog.name = "buddy"
+dog.category = "kyat"
+console.log(dog.sound())
+console.log(dog)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
