@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototype</title>
+<link rel="icon" href="">
+</head>
+<body>
+    <script>
+
+  // consttutor fun
+   
+const obj = {
+    firstname: "mahesh",
+    lastname:"kumar",
+    age:'22'
+
+}
+console.log(obj.__proto__.__proto__)
+
+function Person(firstname , lastname , gender ){
+    this.firstname = firstname
+    this.lastname = lastname 
+    this.gender = gender
+}
+
+let Father = new Person("Pratap" , "singh" , "male")
+// let mother = new Person("Hemlata" , "sbai" , "female")
+// let Brother = new Person("rohit" , "kumar" , "male")
+// let sister = new Person("gayatri" , "kumari" , "female")
+
+
+// console.log(Father)
+// console.log(mother)
+// console.log(Brother)
+// console.log(sister)
+
+Person.status = "married"  // here the property is not added we are added with the help of the constructor funtion
+Person.prototype.status = "married" // now the property is added so we are going to move forward soon
+Person.prototype.religion = function (){
+return `${this.firstname} religion is hindu`
+}
+
+
+Father.nationality = "Indian" 
+Father.fullname = function (){
+    return this.firstname + this.lastname
+}
+console.log(Father.religion())
+
+
+console.log(Father.fullname())
+
+
+// Now inhereits the properties of the object when she was not going and event founding somewhere so that i want to watch match but something they stop me so that we are cleared out thougt focus on my things or achivment 
+
+const employee = {
+    calculateTax(){
+        return " this tax is dedecuted 10%"
+
+    }
+}
+
+const mahesh = {
+    salray:6000,
+    currentSalary(){
+        return "salary is nearby 690"
+    }
+}
+
+mahesh.__proto__ = employee
+employee.__proto__ = mahesh
+console.log(mahesh.calculateTax()) // with the help of the __proto__ wer are inherti the properties of the object
+
+console.log(employee.currentSalary())
+
+
+//  so now this is the full introduction of the javascript
+
+
+
+
+
+
+    </script>
+</body>
+</html>

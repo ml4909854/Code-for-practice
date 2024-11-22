@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function Person(name) {
+  this.name = name;
+}
+
+Person.prototype.greet = function () {
+  console.log(`Hello, my name is ${this.name}`);
+};
+
+const john = new Person("John");
+john.greet(); // Output: Hello, my name is John
+
+
+function Animal(type) {
+  this.type = type;
+}
+
+Animal.prototype.speak = function () {
+  console.log(`${this.type} makes a sound`);
+};
+
+function Dog(name) {
+  this.name = name;
+  Animal.call(this, "Dog");
+}
+
+Dog.prototype = Object.create(Animal.prototype);
+Dog.prototype.constructor = Dog;
+
+const dog = new Dog("Buddy");
+dog.speak(); // Output: Dog makes a sound
+
+
+function Car(model) {
+  this.model = model;
+}
+
+Car.prototype.wheels = 4;
+
+const tesla = new Car("Tesla");
+console.log(tesla.wheels); // Output: 4
+
+
+
+
+
+function Book(title) {
+  this.title = title;
+}
+
+Book.prototype.toString = function () {
+  return `Book Title: ${this.title}`;
+};
+
+const book = new Book("JavaScript Basics");
+console.log(book.toString()); // Output: Book Title: JavaScript Basics
+
+
+
+function Parent() {
+  this.name = "Parent";
+}
+Parent.prototype.age = 50;
+
+const child = new Parent();
+
+console.log(child.hasOwnProperty("age")); // Output: false
+console.log(child.age); // Output: 50
+
+
+
+Number.prototype.double = function () {
+  return this * 2;
+};
+
+console.log((5).double()); // Output: 10
+
+
+
+Number.prototype.factorial = (function () {
+  const cache = {};
+  return function () {
+    if (cache[this]) return cache[this];
+    let result = 1;
+    for (let i = 1; i <= this; i++) result *= i;
+    cache[this] = result;
+    return result;
+  };
+})();
+
+console.log((5).factorial()); // Output: 120
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
