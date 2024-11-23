@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic fom validation</title>
+</head>
+<style>
+    .error{
+        color: red;
+        opacity: 0.3;
+    }
+</style>
+<body>
+    <h2>Basic form validation</h2>
+    <form id="form">
+
+        <label for="">Name</label>
+        <input type="text" name="" id="name">
+        <span class="error" id="nameError"></span>
+        <br><br>
+        <label for="">emali</label>
+        <input type="text" name="" id="email">
+        <span class="error" id="emailError"></span>
+        <br><br>
+        <label for="">password</label>
+        <input type="text" name="" id="password">
+        <span class="error" id="passwordError"></span>
+        <br>
+        <br>
+        <button type="submit">submit</button>
+    </form>
+
+    <p id="para"></p>
+    <script>
+        function BasicForm() {
+            document.getElementById("form").addEventListener("submit", function (event) {
+                event.preventDefault()
+
+                document.getElementById("nameError").textContent = ""
+                document.getElementById("passwordError").textContent = ""
+                document.getElementById("emailError").textContent = ''
+
+                const name = document.getElementById("name").value.trim();
+                const email = document.getElementById("email").value.trim();
+                const password = document.getElementById("password").value.trim();
+
+                let isValid = true
+
+                if (name === "") {
+                    document.getElementById("nameError").innerHTML = "Name cannot be empty"
+                    isValid = false
+                }
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+                if (!emailRegex.test(email)) {
+                    document.getElementById("emailError").innerHTML = "Enter a valid email"
+                    isValid = false
+                }
+                if (password.length < 6) {
+                    document.getElementById("passwordError").innerHTML = "Enter a valid password"
+                    isValid = false
+                }
+
+                if (isValid) {
+                    alert("form submitted successfully")
+                }
+                document.getElementById("para").innerHTML += `${name}${email}${password}`
+                form.reset()
+            })
+
+        }
+        BasicForm()
+    </script>
+</body>
+
+</html>
