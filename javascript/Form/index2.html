@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+
+<body>
+    <form id="form">
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button type="submit">Submit</button>
+    </form>
+    <p id="para"></p>
+
+    <script>
+        function submitForm() {
+            const form = document.getElementById("form");
+            const para = document.getElementById("para");
+
+            form.addEventListener("submit", function (event) {
+                event.preventDefault(); // Prevent default form submission behavior
+
+                // Fetch values from input fields
+                const username = form.username.value.trim();
+                const password = form.password.value.trim();
+
+                // Validate if fields are empty
+                if (!username || !password) {
+                    para.innerHTML += `<span style="color: red;">Both fields are required.</span><br>`;
+                    return;
+                }
+
+                // Append new values to the paragraph
+                para.innerHTML += `Username: ${username} | Password: ${password}<br>`;
+
+                // Clear form inputs
+                form.reset();
+            });
+        }
+
+        submitForm();
+    </script>
+</body>
+
+</html>

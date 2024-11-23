@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName">
+      
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName">
+      
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" name="fullName" readonly>
+      </form>
+      
+      <script>
+        const firstNameInput = document.getElementById('firstName');
+        const lastNameInput = document.getElementById('lastName');
+        const fullNameInput = document.getElementById('fullName');
+      
+        firstNameInput.addEventListener('input', updateFullName);
+        lastNameInput.addEventListener('input', updateFullName);
+      
+        function updateFullName() {
+          fullNameInput.value = `${firstNameInput.value} ${lastNameInput.value}`;
+        }
+      </script>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
