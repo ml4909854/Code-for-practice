@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>call aplly and bind</title>
+</head>
+<body>
+    <!-- call -->
+     <script>
+
+// call 
+// with the call method you can write a method that can be used on different objects 
+//  call methdod  is the predifined javascript methdo it can be used to invoke call a method with an owner object as 
+// an argument (Parameter)
+
+
+// const person = {
+//     fullname : function(){
+//         return this.firstname + this.lastname
+//     }
+// }
+
+// const person1 = {
+//     firstname:"john",
+//     lastname:"Doe"
+// }
+
+// const person2 = {
+//     firstname:"mahesh",
+//     lastname:"Kumar"
+// }
+
+// // this will return a john does
+// person.fullname.call(person1)
+
+
+// console.log(person.fullname.call(person1))
+// console.log(person.fullname.call(person2))
+
+
+
+
+
+
+
+
+
+
+// const person = {
+//     fullname:function(city){
+//         return this.firstname + this.lastname+ city
+//     }
+// }
+
+// const person1={
+// firstname:'mahes',
+// lastname:"lodhi"
+// }
+
+// const person2 = {
+//     firstname :"ankit",
+//     lastname:"lodhi"
+// }
+
+
+// console.log(person.fullname.call(person1 , "bhopal"))
+// console.log(person.fullname.call(person2 , "bangalore"))
+
+
+// const person = {
+//   fullName: function() {
+//     return this.firstName + " " + this.lastName;
+//   }
+// }
+
+// const person1 = {
+//   firstName: "Mary",
+//   lastName: "Doe"
+// }
+
+// // This will return "Mary Doe":
+// console.log(person.fullName.apply(person1))
+
+// const person = {
+//   fullName: function(city, country) {
+//     return this.firstName + " " + this.lastName + "," + city + "," + country;
+//   }
+// }
+
+// const person1 = {
+//   firstName:"John",
+//   lastName: "Doe"
+// }
+
+// let text = person.fullName.apply(person1, ["Oslo", "Norway"]);
+// console.log(text)
+
+     </script>
+</body>
+</html>
