@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real time validation</title>
+</head>
+
+<body>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Real-Time Form Validation</title>
+        <style>
+            .error {
+                color: red;
+                font-size: 0.9em;
+            }
+
+            .valid {
+                color: green;
+                font-size: 0.9em;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h2>Real-Time Form Validation</h2>
+        <form id="realTimeForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <span class="error" id="nameError"></span>
+            <br><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <span class="error" id="emailError"></span>
+            <br><br>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <span class="error" id="passwordError"></span>
+            <br><br>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <script>
+
+            const nameField = document.getElementById("name")
+            const emailField = document.getElementById("email")
+            const passwordField = document.getElementById("password")
+
+            const nameError = document.getElementById("nameError").innerHTML = ""
+            const passwordError = document.getElementById("passwordError").innerHTML = ""
+            const emailError = document.getElementById("emailError").innerHTML = ""
+
+            nameField.addEventListener("input", function () {
+                if (name === "") {
+                    nameError.innerHTML = "name cannot be empty"
+                } else {
+                    nameError.innerHTML = ""
+                }
+            })
+            emailField.addEventListener("input", function () {
+                const email = emailField.value.trim();
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                if (!emailRegex.test(email)) {
+                    emailError.textContent = "Enter a valid email.";
+                } else {
+                    emailError.textContent = "";
+                }
+            });
+            passwordField.addEventListener("input", function () {
+                const password = passwordField.value;
+
+                if (password.length < 8) {
+                    passwordError.textContent = "Password must be at least 8 characters.";
+                } else {
+                    passwordError.textContent = "";
+                }
+            });
+
+            document.getElementById("realTimeForm").addEventListener("submit", function (event) {
+                event.preventDefault()
+                alert("form submitted sucesfully")
+            })
+
+        </script>
+    </body>
+
+    </html>
+
+</body>
+
+</html>
