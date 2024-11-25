@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unordered list</title>
+</head>
+<body>
+    <div id="div">
+
+    </div>
+    <script>
+        let div = document.getElementById("div")
+        let ul = document.createElement("ul")
+        let li = document.createElement("li")
+        li.innerHTML = "hello world!"
+        ul.append(li)
+        div.append(ul)
+    </script>
+</body>
+</html>

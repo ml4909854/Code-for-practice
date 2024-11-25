@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dropdown</title>
+</head>
+
+<body>
+    <style>
+        #dropdown {
+            width: 150px;
+
+            border: 1px solid black;
+            left: 0px;
+            text-align: center;
+        }
+
+        #dropdownlist {
+            width: inherit;
+            height: 150px;
+            border: 1px solid black;
+            padding-left: 0px;
+            display: none;
+            transition: height 2s;
+        }
+
+        #dropdownlist>li {
+            background-color: green;
+            width: inherit;
+            list-style: none;
+            border: 1px solid black;
+            padding: 10px;
+            padding-left: 0px;
+        }
+
+        #dropdown:hover #dropdownlist {
+            display: block;
+            height: 150px;
+        }
+    </style>
+    <div id="dropdown">
+        dorpdown menu
+        <ul id="dropdownlist">
+            <li>mango</li>
+            <li>papay</li>
+            <li>ornage</li>
+            <li>aam</li>
+        </ul>
+    </div>
+</body>
+
+</html>

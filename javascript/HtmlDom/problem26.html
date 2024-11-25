@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chager</title>
+</head>
+<body>
+    <style>
+       #para {
+width: 100px;
+height: 100px;
+border: 1px solid grey;
+        }
+    </style>
+    <p id="para">para</p>
+    <script>
+        let para = document.getElementById("para")
+        para.addEventListener("mouseover" , function(){
+            para.style.borderColor = "1px solid red"
+        })
+        para.addEventListener("mouseout" , function(){
+            para.style.borderColor = "1px solid green"
+        })
+    </script>
+</body>
+</html>

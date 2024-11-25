@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dynamicn table</title>
+</head>
+
+<body>
+    <div id="div">
+
+    </div>
+    <script>
+        let div = document.getElementById("div")
+        let table = document.createElement("table")
+        let tr = document.createElement("tr")
+        let th1 = document.createElement("th")
+        th1.innerHTML = "name"
+        let th2 = document.createElement("th")
+        th2.innerHTML = "email"
+        let td = document.createElement("td")
+        td.innerHTML = "Mahesh"
+        let td1 = document.createElement("td")
+        td.innerHTML = "maheshgmail.com"
+        tr.append(td, td1)
+        tr.append(th1, th2)
+        table.append(tr)
+        table.append()
+        div.append(table)
+
+    </script>
+</body>
+
+</html>

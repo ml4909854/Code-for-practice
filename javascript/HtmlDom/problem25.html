@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read more</title>
+</head>
+
+<body>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi excepturi rem est eligendi dolore eveniet
+        perferendis labore sunt fugit nulla. Quasi itaque commodi consequuntur molestias qui quas dolorem repellat
+        reprehenderit! <span id="read">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam blanditiis esse
+            perspiciatis minus. Quis tenetur commodi repellendus eveniet facere non consequatur obcaecati libero, hic
+            quia quisquam perspiciatis eos dolorem laudantium!</span></p><button id="button">
+        Read More
+    </button>
+
+    <script>
+        let button = document.getElementById("button")
+        let read = document.getElementById("read")
+        read.style.display = "none"
+        button.addEventListener("click" , function(){
+            read.style.display = "block"
+        })
+    </script>
+</body>
+
+</html>

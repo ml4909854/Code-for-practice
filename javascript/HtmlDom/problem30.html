@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toottip</title>
+</head>
+<body>
+    <style>
+        #tool{
+            display:none;
+        }
+    </style>
+    <p id="para">Hover on thies</p>
+    <p id="tool">Hey i am a toottip</p>
+    <script>
+        let para = document.getElementById("para")
+        let tool = document.getElementById("tool")
+
+        para.addEventListener("mouseenter" , function(){
+            tool.style.display = "block"
+        })
+    para.addEventListener("mouseleave" , function(){
+        tool.style.display = "none"
+    })
+    </script>
+</body>
+</html>
