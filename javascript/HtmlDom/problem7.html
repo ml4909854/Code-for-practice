@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INput file value</title>
+</head>
+<body>
+    <p id = "para" > </p>
+    <input type="text" name="" value="" id="username">
+    <script>
+        let para = document.getElementById("para");
+        let usernameInput = document.getElementById("username");
+
+        // Add an event listener to capture the input's value in real-time
+        usernameInput.addEventListener('input', function () {
+            let username = usernameInput.value; // Get the updated value
+            console.log(username); // Log the value
+            para.innerHTML = username; // Update the paragraph with the input value
+        });
+        
+    </script>
+</body>
+</html>

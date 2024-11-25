@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hide</title>
+    
+</head>
+<body>
+    <button id="button">click me</button>
+    <div id="div">
+        Helo i am a <div></div>
+    </div>
+    <script>
+    let button = document.getElementById("button")
+    let div = document.getElementById("div")
+    button.addEventListener("click" , function(){
+        div.style.display = "none"
+    })
+    </script>
+</body>
+</html>

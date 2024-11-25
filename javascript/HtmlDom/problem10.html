@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hidden html element</title>
+
+</head>
+
+<body>
+    <style>
+       
+    </style>
+    <div id="div">Hello i am div</div>
+    <button id="btn">display blbok</button>
+    <script>
+        let div = document.getElementById("div")
+        div.style.display = "none"
+        let button = document.getElementById("btn")
+        button.addEventListener("click" , function(){
+            div.style.display = "block"
+        })
+    </script>
+
+</body>
+
+</html>
