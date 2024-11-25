@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<textarea name="" id="textarea"></textarea>
+<p>Counter : <span id="counter">0</span> <span>/100</span></p>
+<script>
+let textarea = document.getElementById("textarea")
+let counter  = document.getElementById("counter")
+
+textarea.addEventListener("input" , function(){
+    counter.innerHTML = textarea.value.length
+})
+
+</script>
+</body>
+</html>

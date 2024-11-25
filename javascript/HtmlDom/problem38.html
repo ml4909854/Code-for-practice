@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animate with setInterval</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      background-color: #f0f0f0;
+    }
+
+    #box {
+      width: 50px;
+      height: 50px;
+      background-color: red;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+    }
+  </style>
+</head>
+<body>
+  <div id="box"></div>
+
+  <script>
+    const box = document.getElementById("box");
+    let position = 0; // Starting position of the box
+    const interval = 10; // Speed of animation in milliseconds
+    const step = 2; // Pixels to move per interval
+    const maxWidth = window.innerWidth - 50; // Maximum position (subtract box width)
+
+    const animate = setInterval(() => {
+      if (position >= maxWidth) {
+        clearInterval(animate); // Stop the animation when it reaches the end
+      } else {
+        position += step; // Increment position
+        box.style.left = `${position}px`; // Move the box
+      }
+    }, interval);
+  </script>
+</body>
+</html>

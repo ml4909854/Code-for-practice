@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+    <button id="button">light</button>
+    <script>
+        let body = document.getElementsByTagName("body")[0]
+        let button = document.getElementById("button")
+        let toggle = false
+        button.addEventListener("click", function () {
+            if (toggle) {
+                body.style.backgroundColor = "white"
+                button.innerHTML = "Light"
+                toggle = false
+            }
+            else {
+                body.style.backgroundColor = "Black"
+                button.innerHTML = "Dark"
+                toggle = true
+            }
+
+        })
+    </script>
+</body>
+
+</html>

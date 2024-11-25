@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Replace Images with Placeholder</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+
+    img {
+      max-width: 200px;
+      margin: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Replace All Images with Placeholder</h1>
+  <button id="replaceBtn">Replace Images</button>
+  <div>
+    <img src="https://via.placeholder.com/200" alt="Sample 1">
+    <img src="https://via.placeholder.com/150" alt="Sample 2">
+    <img src="https://via.placeholder.com/300" alt="Sample 3">
+  </div>
+
+  <script>
+    const placeholderSrc = "https://via.placeholder.com/150"; // Placeholder image URL
+    const replaceBtn = document.getElementById('replaceBtn');
+    const images = document.querySelectorAll('img'); // Select all img elements
+
+    replaceBtn.addEventListener('click', () => {
+      images.forEach(img => {
+        img.src = placeholderSrc; // Replace src attribute with placeholder
+      });
+      alert('All images have been replaced!');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Highlight Words</title>
+  <style>
+    .highlight {
+      background-color: yellow;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>Highlight Word in Paragraph</h2>
+  <input type="text" id="searchWord" placeholder="Enter word to highlight">
+  <button id="highlightBtn">Highlight</button>
+  <p id="text">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum is a popular placeholder text used in web design, typography, and printing.
+  </p>
+
+  <script>
+    const highlightBtn = document.getElementById('highlightBtn');
+    const searchWordInput = document.getElementById('searchWord');
+    const textElement = document.getElementById('text');
+
+    highlightBtn.addEventListener('click', () => {
+      // Get the word to highlight
+      const word = searchWordInput.value.trim();
+
+      if (word === '') {
+        alert('Please enter a word to highlight.');
+        return;
+      }
+
+      // Escape special regex characters in the word
+      const escapedWord = word.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+
+      // Create a regular expression to find all occurrences of the word (case insensitive)
+      const regex = new RegExp(`(${escapedWord})`, 'gi');
+
+      // Replace the word with the same word wrapped in a <span> with a highlight class
+      const originalText = textElement.textContent; // Original text without highlighting
+      const highlightedText = originalText.replace(regex, '<span class="highlight">$1</span>');
+
+      // Update the paragraph's innerHTML with the highlighted text
+      textElement.innerHTML = highlightedText;
+    });
+  </script>
+</body>
+</html>

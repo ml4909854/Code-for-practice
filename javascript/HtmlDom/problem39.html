@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blinking text</title>
+</head>
+<style>
+    #text {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 20%;
+        color: blue;
+    }
+</style>
+
+<body>
+    <div id="text">Blinking text</div>
+    <script>
+        let text = document.getElementById("text")
+        let visible = false
+        setInterval(() => {
+            if (visible) {
+                text.style.visibility = "hidden"
+                visible = false
+            }
+            else {
+                text.style.visibility = "visible"
+                visible = true
+            }
+        }, 500);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Navbar with Dropdown</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav {
+      background-color: #007BFF;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav .menu {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav .menu-item {
+      position: relative;
+      cursor: pointer;
+    }
+
+    nav .menu-item > a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    nav .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 4px;
+      overflow: hidden;
+      z-index: 10;
+    }
+
+    nav .dropdown a {
+      display: block;
+      padding: 10px 20px;
+      text-decoration: none;
+      color: #333;
+      font-size: 14px;
+    }
+
+    nav .dropdown a:hover {
+      background-color: #f0f0f0;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
+      color: white;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      nav .menu {
+        flex-direction: column;
+        display: none;
+      }
+
+      nav .menu-item {
+        margin-bottom: 10px;
+      }
+
+      nav .menu.open {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <span class="menu-toggle">☰</span>
+  <div class="menu">
+    <div class="menu-item">
+      <a href="#">Home</a>
+    </div>
+    <div class="menu-item">
+      <a href="#">Services</a>
+      <div class="dropdown">
+        <a href="#">Web Development</a>
+        <a href="#">App Development</a>
+        <a href="#">SEO</a>
+      </div>
+    </div>
+    <div class="menu-item">
+      <a href="#">About</a>
+    </div>
+    <div class="menu-item">
+      <a href="#">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  // Toggle dropdown visibility on mouseenter and mouseleave
+  const menuItems = document.querySelectorAll('.menu-item');
+  menuItems.forEach(item => {
+    const dropdown = item.querySelector('.dropdown');
+    if (dropdown) {
+      item.addEventListener('mouseenter', () => {
+        dropdown.style.display = 'block';
+      });
+      item.addEventListener('mouseleave', () => {
+        dropdown.style.display = 'none';
+      });
+    }
+  });
+
+  // Toggle menu visibility on small screens
+  const menuToggle = document.querySelector('.menu-toggle');
+  const menu = document.querySelector('.menu');
+
+  menuToggle.addEventListener('click', () => {
+    menu.classList.toggle('open');
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            /* border: 1px solid rgb(219, 215, 215); */
+            /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+        }
+
+    </style>
+    <div id="box"></div>
+    <br>
+    <button id="add">Add Shadow</button>
+    <button id="remove">Remove Shadow</button>
+
+    <script>
+        let box = document.getElementById("box")
+        let add = document.getElementById("add")
+        let remove = document.getElementById("remove")
+       
+        add.addEventListener("click" , function(){
+            box.style.boxShadow = "rgba(0, 0, 0, 0.35) 0px 5px 15px"
+        })
+        remove.addEventListener("click" , function(){
+            box.style.boxShadow = "none"
+        })
+
+    </script>
+</body>
+
+</html>
