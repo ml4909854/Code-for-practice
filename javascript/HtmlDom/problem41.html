@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rotating Cube</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #111;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .cube {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      transform-style: preserve-3d;
+      transform: rotateX(0deg) rotateY(0deg);
+    }
+
+    .cube div {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: rgba(255, 255, 255, 0.8);
+      border: 2px solid #000;
+    }
+
+    .front  { transform: rotateY(0deg) translateZ(50px); }
+    .back   { transform: rotateY(180deg) translateZ(50px); }
+    .right  { transform: rotateY(90deg) translateZ(50px); }
+    .left   { transform: rotateY(-90deg) translateZ(50px); }
+    .top    { transform: rotateX(90deg) translateZ(50px); }
+    .bottom { transform: rotateX(-90deg) translateZ(50px); }
+  </style>
+</head>
+<body>
+  <div class="cube">
+    <div class="front"></div>
+    <div class="back"></div>
+    <div class="right"></div>
+    <div class="left"></div>
+    <div class="top"></div>
+    <div class="bottom"></div>
+  </div>
+
+  <script>
+    const cube = document.querySelector('.cube');
+    
+    let angleX = 0;
+    let angleY = 0;
+
+    function rotateCube() {
+      angleX += 1; // Adjust rotation speed
+      angleY += 1; // Adjust rotation speed
+      cube.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg)`;
+      requestAnimationFrame(rotateCube); // Smooth animation
+    }
+
+    rotateCube(); // Start the animation
+  </script>
+</body>
+</html>

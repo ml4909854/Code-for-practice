@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slide-In Sidebar Menu</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+    }
+
+    /* Sidebar Styles */
+    #sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px; /* Initially hide the sidebar off-screen */
+      width: 250px;
+      height: 100%;
+      background-color: #333;
+      color: white;
+      transition: transform 0.3s ease; /* Smooth transition for slide effect */
+      padding-top: 20px;
+    }
+
+    #sidebar a {
+      display: block;
+      padding: 15px;
+      text-decoration: none;
+      color: white;
+      border-bottom: 1px solid #444;
+    }
+
+    #sidebar a:hover {
+      background-color: #575757;
+    }
+
+    /* Main content area */
+    #main-content {
+      flex-grow: 1;
+      padding: 20px;
+      transition: margin-left 0.3s ease; /* Adjust main content position when sidebar slides in */
+    }
+
+    /* Button to toggle sidebar */
+    #toggle-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: #3498db;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    #toggle-button:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar Menu -->
+  <div id="sidebar">
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Contact</a>
+  </div>
+
+  <!-- Main Content -->
+  <div id="main-content">
+    <button id="toggle-button">Toggle Sidebar</button>
+    <h1>Welcome to the Page</h1>
+    <p>This is the main content area. The sidebar slides in from the left when you click the button.</p>
+  </div>
+
+  <script>
+    // Get the sidebar and button elements
+    const sidebar = document.getElementById("sidebar");
+    const toggleButton = document.getElementById("toggle-button");
+
+    // Track sidebar state (hidden or shown)
+    let isSidebarVisible = false;
+
+    // Add click event listener to the toggle button
+    toggleButton.addEventListener("click", function() {
+      // Toggle sidebar visibility
+      if (isSidebarVisible) {
+        // Slide the sidebar out
+        sidebar.style.transform = "translateX(-250px)";
+        document.getElementById("main-content").style.marginLeft = "0"; // Reset main content position
+      } else {
+        // Slide the sidebar in
+        sidebar.style.transform = "translateX(0)";
+        document.getElementById("main-content").style.marginLeft = "250px"; // Shift main content to the right
+      }
+      
+      // Toggle the state
+      isSidebarVisible = !isSidebarVisible;
+    });
+  </script>
+
+</body>
+</html>

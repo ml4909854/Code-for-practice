@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Transitions Example</title>
+  <style>
+    /* General styling for the element */
+    .transition-box {
+      width: 200px;
+      height: 200px;
+      background-color: #3498db;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease; /* Apply transition on all properties */
+    }
+
+    /* Styling when the box is hovered */
+    .transition-box:hover {
+      background-color: #2980b9;  /* Change background color */
+      color: #f1f1f1;  /* Change text color */
+      transform: scale(1.1);  /* Scale up the box */
+    }
+  </style>
+</head>
+<body>
+
+  <div class="transition-box">
+    Hover Me
+  </div>
+
+  <script>
+    // JavaScript is not necessary for this example, but it can be used to add interactivity.
+  </script>
+
+</body>
+</html>
