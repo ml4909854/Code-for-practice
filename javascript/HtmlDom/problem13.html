@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToolTip </title>
+</head>
+<body>
+    
+    <div class="tooltip-container" id="hoverElement">
+        Hover over me
+        <div class="tooltip" id="tooltipText">This is a tooltip!</div>
+      </div>
+    
+      <script>
+        // Select the element and tooltip
+        const hoverElement = document.getElementById("hoverElement");
+        const tooltip = document.getElementById("tooltipText");
+    
+        // Add mouseenter event to show the tooltip
+        hoverElement.addEventListener("mouseenter", () => {
+          tooltip.style.display = "block";
+        });
+    
+        // Add mouseleave event to hide the tooltip
+        hoverElement.addEventListener("mouseleave", () => {
+          tooltip.style.display = "none";
+        });
+        </script>
+</body>
+</html>

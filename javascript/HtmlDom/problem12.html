@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamically Adding Select Options</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #div {
+            width: 150px;
+            height: 150px;
+            border: 1px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .select {
+            width: 150px;
+            /* display: none; */
+        }
+        .select>option{
+            display: none;
+        }
+        .select:hover .select>option{
+            display: block;
+            width: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div"></div>
+    <script>
+        let div = document.getElementById("div");
+        let select = document.createElement("select");
+        select.classList.add("select");
+
+        let option1 = document.createElement("option");
+        option1.innerHTML = "Food";
+        let option2 = document.createElement("option");
+        option2.innerHTML = "Vegetables";
+        let option3 = document.createElement("option");
+        option3.innerHTML = "Fruits";
+
+        select.append(option1, option2, option3);
+        div.append(select);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Displahy current datae and time</title>
+
+</head>
+
+<body>
+    <p id="para"></p>
+    <script>
+        let para = document.getElementById("para")
+        const date = new Date()
+        let time = date.getTime()
+        let da = date.getDate()
+        convertMilliseconds(time)
+        function convertMilliseconds(ms) {
+            // Total seconds
+            let totalSeconds = Math.floor(ms / 1000);
+
+            // Calculate hours, minutes, and seconds
+            let hours = Math.floor(totalSeconds / 3600);
+            let minutes = Math.floor((totalSeconds % 3600) / 60);
+            let seconds = totalSeconds % 60;
+
+            // Return the result as a formatted string
+            return `${hours} hours, ${minutes} minutes, and ${seconds} seconds`;
+        }
+        para.innerHTML = `${da} ; ${time}`
+    </script>
+</body>
+
+</html>

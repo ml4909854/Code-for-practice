@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <textarea name="" id="textarea"></textarea>
+    <p class="counter">Characters: <span id="charCount">0</span><span>/10</span></p>
+    <script>
+        let textarea = document.getElementById("textarea")
+        let charCount = document.getElementById("charCount")
+        textarea.addEventListener("input", function () {
+            charCount.textContent = textarea.value.length
+            if (textarea.value.length >= 10) {
+                alert("your message is 10 characters")
+
+            }
+            else {
+                textarea.innerHTML = ""
+            }
+
+        })
+    </script>
+</body>
+
+</html>

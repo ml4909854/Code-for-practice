@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  
+        <li>List 1</li>
+        <li>list 2</li>
+        <li>list 3</li>
+<button id="button"> click me</button>
+    <script>
+        let list = document.querySelectorAll("li")
+        let button = document.getElementById("button")
+
+        list.forEach(list =>{
+            button.addEventListener("click" , function(){
+                list.innerHTML = "Hello World !"
+            })
+        })
+        
+    </script>
+</body>
+</html>
