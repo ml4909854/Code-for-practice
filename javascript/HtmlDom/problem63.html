@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>countDown timer</title>
+</head>
+
+<body>
+    <p id="counter">0</p>
+    <button id="start">start</button>
+    <button id="stop">stop</button>
+
+    <button id="reset">reset</button>
+
+    <script>
+        let start = document.getElementById("start")
+        let stop = document.getElementById("stop")
+        let counter = document.getElementById("counter")
+        let reset = document.getElementById("reset")
+        let count = 0;
+        let countinterval ;
+        start.addEventListener("click", function () {
+            countinterval = setInterval(() => {
+                counter.innerHTML = count++
+            },1000);
+        })
+
+        stop.addEventListener("click" , function(){
+            clearInterval(countinterval)
+            counter.innerHTML = count
+        })
+
+        reset.addEventListener("click" , function(){
+            clearInterval(countinterval)
+            counter.innerHTML = "0"
+            count = 0;
+        })
+    </script>
+
+</body>
+
+</html>

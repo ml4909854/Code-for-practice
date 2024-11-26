@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>random quptes</title>
+</head>
+<body>
+    <p id="quote">click the button toget the redom quotes</p>
+    <button id="btn">random quotes</button>
+
+    <script>
+             const quotes = [
+            "The only limit to our realization of tomorrow is our doubts of today. – Franklin D. Roosevelt",
+            "In the middle of every difficulty lies opportunity. – Albert Einstein",
+            "The purpose of life is not to be happy. It is to be useful, to be honorable, to be compassionate, to have it make some difference that you have lived and lived well. – Ralph Waldo Emerson",
+            "Success is not final, failure is not fatal: It is the courage to continue that counts. – Winston Churchill",
+            "The only way to do great work is to love what you do. – Steve Jobs"
+        ];
+
+        let quote = document.getElementById("quote")
+        let btn = document.getElementById("btn")
+
+        btn.addEventListener("click" , function(){
+            const randomeIndex = Math.floor(Math.random()*quotes.length)
+            quote.innerHTML = quotes[randomeIndex]
+        })
+    </script>
+</body>
+</html>

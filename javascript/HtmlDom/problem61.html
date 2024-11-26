@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dynamic clock</title>
+</head>
+
+<body>
+    <p id="clock">00:00:00</p>
+
+    <script>
+       
+     setInterval(() => {
+        let clock = document.getElementById("clock")
+        let d = new Date()
+
+        let hours = d.getHours()
+        let minutes = d.getMinutes()
+        let seconds = d.getSeconds()
+
+        hours = hours < 10 ? "0" + hours : hours
+        minutes = minutes < 10 ? "0" + minutes : minutes
+        seconds = seconds < 10 ? "0" + seconds : seconds
+        clock.innerHTML = `${hours}:${minutes}:${seconds}`
+
+     }, 1000);
+    </script>
+</body>
+
+</html>
