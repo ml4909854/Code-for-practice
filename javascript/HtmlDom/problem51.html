@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>email validation</title>
+</head>
+
+<body>
+    <form id="form">
+        <input type="email" id="email"><label id="message"></label>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        let emailInput = document.getElementById('email')
+        let message = document.getElementById("message")
+        let form = document.getElementById("form")
+        form.addEventListener("submit", function (event) {
+            event.preventDefault()
+            console.log("form is submittedd")
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            
+                const email = emailInput.value
+                if (emailRegex.test(email)) {
+                    message.innerHTML = "valid email"
+                }else{
+                    message.innerHTML = "Invalid email"
+                }
+            
+        })
+    </script>
+</body>
+
+</html>

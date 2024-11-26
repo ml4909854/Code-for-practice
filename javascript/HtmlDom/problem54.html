@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>diabled</title>
+</head>
+
+<body>
+    <form id="form">
+        <div>
+            <input type="email" name="" id="email">
+            <p id="emailError"></p>
+        </div>
+        <div>
+            <input type="password" name="" id="password">
+            <p id="passwordError"></p>
+
+        </div>
+        <button type="submit" id="submitbutton" disabled>submit</button>
+    </form>
+
+    <script>
+
+        let form = document.getElementById("form")
+        let email = document.getElementById("email")
+        let password = document.getElementById("password")
+        let emailError = document.getElementById("emailError")
+        let passwordError = document.getElementById("passwordError")
+        let submitbutton = document.getElementById("submitbutton")
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const passwordMinlength = 8
+
+        function Disable() {
+
+            let validEmail = emailRegex.test(email.value)
+            let validPassword = password.value.length >= passwordMinlength
+
+            if (validEmail) {
+                emailError.innerHTML = "Email are valid"
+                emailError.style.color = "green"
+            }
+            else {
+                emailError.innerHTML = "Email are not valid"
+                emailError.style.color = "red"
+            }
+
+            if (validPassword) {
+                passwordError.innerHTML = "Password are correct"
+                passwordError.style.color = "green"
+            }
+            else {
+                passwordError.innerHTML = "Password are not correct"
+                passwordError.style.color = "red"
+            }
+
+            submitbutton.disabled = !(validEmail && validPassword)
+
+        }
+
+        email.addEventListener("input", Disable)
+        password.addEventListener("input", Disable)
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault()
+            alert("form is submitted sucessfully")
+        })
+    </script>
+</body>
+
+</html>

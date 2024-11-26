@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Dropdown Menu</title>
+</head>
+<body>
+    <h2>Custom Dropdown Menu</h2>
+    <form>
+        <label for="dropdown">Choose an option:</label>
+        <select id="dropdown"></select>
+    </form>
+
+    <script>
+        // Data for dropdown options
+        const options = ["Option 1", "Option 2", "Option 3", "Option 4"];
+
+        // Reference to the dropdown element
+        const dropdown = document.getElementById("dropdown");
+
+        // Function to populate dropdown dynamically
+        function createDropdownOptions(options) {
+            options.forEach(optionText => {
+                const optionElement = document.createElement("option"); // Create <option> element
+                // optionElement.value = optionText.toLowerCase().replace(" ", "-"); // Set value
+                optionElement.textContent = optionText; // Set display text
+                dropdown.appendChild(optionElement); // Append to <select>
+            });
+        }
+
+        // Initialize the dropdown
+        createDropdownOptions(options);
+    </script>
+</body>
+</html>

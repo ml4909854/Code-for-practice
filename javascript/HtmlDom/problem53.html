@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form with Real-Time Validation</title>
+</head>
+
+<body>
+  <h2>Form with Real-Time Validation</h2>
+  <form id="form">
+    <div>
+      <label>Email: </label>
+      <input type="email" id="email">
+      <p id="emailerror"></p>
+    </div>
+    <div>
+      <label>Password: </label>
+      <input type="password" id="password">
+      <p id="passworderror"></p>
+    </div>
+    <button type="submit" id="submitButton" disabled>Submit</button>
+  </form>
+
+  <script>
+    let form = document.getElementById("form");
+    let email = document.getElementById("email");
+    let password = document.getElementById("password");
+    let passworderror = document.getElementById("passworderror");
+    let emailerror = document.getElementById("emailerror");
+    let submitButton = document.getElementById("submitButton");
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const passwordMinLength = 8;
+
+    function validateForm() {
+      const validEmail = emailRegex.test(email.value);
+      const validPassword = password.value.length >= passwordMinLength;
+
+      // Validate Email
+      if (validEmail) {
+        emailerror.textContent = "Email is valid";
+        emailerror.style.color = "green";
+      } else {
+        emailerror.textContent = "Email is not valid";
+        emailerror.style.color = "red";
+      }
+
+      // Validate Password
+      if (validPassword) {
+        passworderror.textContent = "Password is valid";
+        passworderror.style.color = "green";
+      } else {
+        passworderror.textContent = `Password must be at least ${passwordMinLength} characters long`;
+        passworderror.style.color = "red";
+      }
+
+      // Enable/Disable Submit Button
+      submitButton.disabled = !(validEmail && validPassword);
+    }
+
+    // Add event listeners for real-time validation
+    email.addEventListener("input", validateForm);
+    password.addEventListener("input", validateForm);
+
+    // Form submission
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      alert("Form submitted successfully!");
+    });
+  </script>
+</body>
+
+</html>

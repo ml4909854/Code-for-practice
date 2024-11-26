@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check if two password fields match</title>
+</head>
+
+<body>
+    <form id="form">
+        <input type="password" id="password1" required><br><br>
+        <input type="password" id="password2" required><br><br>
+        <button type="submit" id="btn">Submit</button>
+        <p id="message"></p>
+    </form>
+
+
+    <script>
+
+        const password1 = document.getElementById("password1");
+        const password2 = document.getElementById("password2");
+        const form = document.getElementById("form");
+        const message = document.getElementById("message");
+
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault()
+            if (password1.value === password2.value) {
+                message.textContent = "Both passwords are match"
+                message.style.color = "green"
+            }else{
+                message.textContent = "passwords do not match"
+                message.style.color = "red"
+            }
+        })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+
+</html>

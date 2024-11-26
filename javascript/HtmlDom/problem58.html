@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Counter</title>
+</head>
+<body>
+    <h2>Character Counter with Limit</h2>
+    <form>
+        <textarea id="textarea" maxlength="50" placeholder="Type your message here..."></textarea>
+        <p id="counter">50 characters remaining</p>
+    </form>
+
+    <script>
+        const textarea = document.getElementById("textarea");
+        const counter = document.getElementById("counter");
+
+        // Add an input event listener
+        textarea.addEventListener("input", function () {
+            const remainingLength = textarea.maxLength - textarea.value.length;
+            counter.innerHTML = `${remainingLength} characters remaining`;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+ p   <h2>Numeric input only</h2>
+    <form>
+        <label for="numericInput">Enter Numbers Only:</label>
+        <input type="" id="numericInput">
+        <p id="errorMessage" style="color: red; display: none;">Only numeric input is allowed!</p>
+    </form>
+    <script>
+         const numericInput = document.getElementById("numericInput");
+        const errorMessage = document.getElementById("errorMessage");
+
+numericInput.addEventListener("keypress" , function(event){
+    console.log(event)
+    const charcode =event.keyCode
+    // check if the pressed key is not a number(0-9)
+    if(charcode<48|| charcode>57){
+        event.preventDefault();
+        errorMessage.style.display = "block"
+    }else{
+        errorMessage.style.display = "none"
+    }
+})
+    </script>
+</body>
+</html>

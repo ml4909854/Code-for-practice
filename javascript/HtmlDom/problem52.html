@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passswoard check</title>
+</head>
+<body>
+    <form id="form">
+
+        <input type="password" name="" id="password">
+        <button type="submit">submit</button>
+    </form>
+    <p id="message"></p>
+    <script>
+
+        let form = document.getElementById("form")
+        let password = document.getElementById("password")
+        let message = document.getElementById("message")
+
+        form.addEventListener("submit" , function(event){
+            event.preventDefault()
+
+            let pass = password.value.length
+            if(pass>=8){
+                message.innerHTML = "password is correct"
+            }
+            if(pass===0){
+                alert("password is empty")
+            }
+            else{
+                message.innerHTML = "password at least 8 characters"
+            }
+        })
+    </script>
+</body>
+</html>
