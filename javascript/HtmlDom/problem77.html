@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rating</title>
+</head>
+
+<style>
+    .star {
+        font-size: 30px;
+        color: gray;
+
+    }
+
+    .star.selected {
+        color: gold;
+    }
+</style>
+
+<body>
+    <h1>Star Rating System</h1>
+    <div id="rating-container">
+        <!-- Create 5 stars -->
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+    </div>
+    <div class="rating-display" id="rating-display">Your rating: 0 stars</div>
+
+    <script>
+
+        let stars = document.querySelectorAll(".star")
+        const ratingDisplay = document.getElementById("rating-display")
+        let rating = 0
+        function updateRating(selectedRating) {
+            rating = selectedRating;
+            // Update the displayed rating
+            ratingDisplay.textContent = `Your rating: ${rating} stars`;
+            // Highlight the selected stars
+            stars.forEach((star, index) => {
+                if (index < rating) {
+                    star.classList.add('selected');
+                } else {
+                    star.classList.remove('selected');
+                }
+            });
+        }
+
+        stars.forEach((star, index) => {
+            star.addEventListener('click', () => {
+                updateRating(index + 1);  // Index starts from 0, so we add 1 to match rating
+            });
+        });
+       
+    </script>
+</body>
+
+</html>

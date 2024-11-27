@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Implement an autocomplete input</title>
+</head>
+
+<body>
+    <div>
+        <input type="text" id="autocomplete" placeholder="Type to search...">
+        <div id="suggestions"></div>
+
+        <script>
+            // Array of predefined suggestions
+            const data = [
+                "Apple",
+                "Banana",
+                "Cherry",
+                "Date",
+                "Elderberry",
+                "Fig",
+                "Grape",
+                "Honeydew",
+                "Kiwi",
+                "Lemon",
+                "Mango",
+                "Nectarine",
+                "Orange",
+                "Papaya",
+                "Quince",
+                "Raspberry",
+                "Strawberry",
+                "Tomato",
+                "Ugli Fruit",
+                "Watermelon"
+            ];
+
+            const input = document.getElementById("autocomplete");
+            const suggestions = document.getElementById("suggestions");
+
+            input.addEventListener("input", function () {
+                const query = input.value.toLowerCase();
+                suggestions.innerHTML = ""; // Clear previous suggestions
+
+                if (query) {
+                    const filteredData = data.filter(item =>
+                        item.toLowerCase().includes(query)
+                    );
+
+                    if (filteredData.length > 0) {
+                        filteredData.forEach(item => {
+                            const suggestionItem = document.createElement("div");
+                            suggestionItem.innerHTML = item;
+                            suggestionItem.addEventListener("click", function () {
+                                input.value = item; // Set input value
+                                suggestions.innerHTML = ""; // Clear all suggestions
+                            });
+                            suggestions.appendChild(suggestionItem);
+                        });
+                    } else {
+                        suggestions.innerHTML = "<div>No results found</div>";
+                    }
+                }
+            });
+        </script>
+    </div>
+</body>
+
+</html>

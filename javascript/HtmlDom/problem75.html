@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Carousel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .carousel {
+            width: 500px;
+            overflow: hidden;
+            position: relative;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+        }
+
+        .carousel-images {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-images img {
+            width: 500px;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .carousel-controls button {
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .carousel-controls button:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="carousel" id="carousel">
+        <div class="carousel-images" id="carousel-images">
+            <img src="https://via.placeholder.com/500x300?text=Image+1" alt="Image 1">
+            <img src="https://via.placeholder.com/500x300?text=Image+2" alt="Image 2">
+            <img src="https://via.placeholder.com/500x300?text=Image+3" alt="Image 3">
+        </div>
+        <div class="carousel-controls">
+            <button id="prev-btn">&#9664;</button>
+            <button id="next-btn">&#9654;</button>
+        </div>
+    </div>
+
+    <script>
+        // Get carousel elements
+        const carousel = document.getElementById('carousel');
+        const imagesContainer = document.getElementById('carousel-images');
+        const images = document.querySelectorAll('#carousel-images img');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+
+        // Carousel state
+        let currentIndex = 0;
+        const totalImages = images.length;
+
+        // Set interval for auto transition
+        const intervalTime = 3000; // 3 seconds
+        let autoTransition = setInterval(nextImage, intervalTime);
+
+        // Function to update carousel position
+        function updateCarousel() {
+            const offset = -currentIndex * 500; // Assuming each image is 500px wide
+            imagesContainer.style.transform = `translateX(${offset}px)`;
+        }
+
+        // Function to go to the next image
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % totalImages; // Loop back to the start
+            updateCarousel();
+        }
+
+        // Function to go to the previous image
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + totalImages) % totalImages; // Loop back to the end
+            updateCarousel();
+        }
+
+        // Event listeners for buttons
+        nextBtn.addEventListener('click', () => {
+            clearInterval(autoTransition); // Stop auto-transition on manual navigation
+            nextImage();
+            autoTransition = setInterval(nextImage, intervalTime); // Restart auto-transition
+        });
+
+        prevBtn.addEventListener('click', () => {
+            clearInterval(autoTransition); // Stop auto-transition on manual navigation
+            prevImage();
+            autoTransition = setInterval(nextImage, intervalTime); // Restart auto-transition
+        });
+
+        // Optional: Pause carousel on mouse hover
+        carousel.addEventListener('mouseenter', () => clearInterval(autoTransition));
+        carousel.addEventListener('mouseleave', () => {
+            autoTransition = setInterval(nextImage, intervalTime);
+        });
+    </script>
+</body>
+
+</html>

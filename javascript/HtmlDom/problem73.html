@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag-and-Drop File Upload</title>
+</head>
+
+<body>
+    <h1>Drag-and-Drop File Upload</h1>
+
+    <div id="drop-zone">
+        <p>Drag and drop files here, or click to select files</p>
+    </div>
+
+    <ul id="file-list"></ul>
+
+    <script>
+        // Get references to the drop zone and file list
+        const dropZone = document.getElementById('drop-zone');
+        const fileList = document.getElementById('file-list');
+
+        // Add event listeners for drag events
+        dropZone.addEventListener('dragover', (event) => {
+            event.preventDefault(); // Prevent default to allow drop
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+            // No additional visual effects needed when leaving
+        });
+
+        dropZone.addEventListener('dragenter', (event) => {
+            event.preventDefault(); // Prevent default for consistent behavior
+        });
+
+        dropZone.addEventListener('drop', (event) => {
+            event.preventDefault(); // Prevent default drop behavior
+
+            // Get files from the drop event
+            const files = event.dataTransfer.files;
+            handleFiles(files);
+        });
+
+        dropZone.addEventListener('click', () => {
+            // Create an input element for selecting files
+            const fileInput = document.createElement('input');
+            fileInput.type = 'file';
+            fileInput.multiple = true;
+
+            fileInput.addEventListener('change', () => {
+                handleFiles(fileInput.files);
+            });
+
+            fileInput.click(); // Trigger file selection dialog
+        });
+
+        // Function to handle files
+        function handleFiles(files) {
+            fileList.innerHTML = ''; // Clear previous file list
+
+            Array.from(files).forEach((file) => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${file.name} (${(file.size / 1024).toFixed(2)} KB)`;
+                fileList.appendChild(listItem);
+            });
+        }
+    </script>
+</body>
+
+</html>

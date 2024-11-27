@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinite Scroll</title>
+</head>
+
+<body>
+    <div class="container" id="content-container">
+        <div class="content-item">Content Item 1</div>
+        <div class="content-item">Content Item 2</div>
+        <div class="content-item">Content Item 3</div>
+        <div class="content-item">Content Item 4</div>
+        <div class="content-item">Content Item 5</div>
+        <!-- Loading message will appear here -->
+        <div id="loading-message" class="loading">Loading more content...</div>
+    </div>
+
+    <script>
+        const contentContainer = document.getElementById('content-container');
+        const loadingMessage = document.getElementById('loading-message');
+        let isLoading = false;
+
+        // Function to simulate fetching new data
+        function loadMoreContent() {
+            if (isLoading) return; // Prevent multiple requests
+
+            isLoading = true;
+            loadingMessage.style.display = 'block'; // Show loading message
+
+            setTimeout(() => {
+                // Create and append new content items
+                const newContent = document.createElement('div');
+                newContent.classList.add('content-item');
+                newContent.innerHTML = `Content Item ${contentContainer.children.length + 1}`;
+                contentContainer.appendChild(newContent);
+
+                // Hide loading message after adding content
+                loadingMessage.style.display = 'none';
+                isLoading = false;
+            }, 1500); // Simulate an API call delay
+        }
+
+        // Detect when the user reaches the bottom of the container
+        contentContainer.addEventListener('scroll', () => {
+            if (contentContainer.scrollTop + contentContainer.clientHeight >= contentContainer.scrollHeight - 10) {
+                loadMoreContent();
+            }
+        });
+
+        // Optional: Trigger content loading if the page is loaded and the user is already near the bottom
+        if (contentContainer.scrollTop + contentContainer.clientHeight >= contentContainer.scrollHeight - 10) {
+            loadMoreContent();
+        }
+    </script>
+</body>
+
+</html>
