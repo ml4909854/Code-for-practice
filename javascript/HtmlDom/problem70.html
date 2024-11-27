@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automatic Slider with Dots</title>
+    <style>
+        #sliderContainer {
+            width: 100%;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #sliderImage {
+            width: inherit;
+            height: inherit;
+            padding: 20px;
+        }
+
+        #dotsContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            margin: 0 5px;
+            border-radius: 50%;
+            background-color: gray;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .dot.active {
+            background-color: black;
+        }
+
+        #prev,
+        #next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        #prev {
+            left: 10px;
+        }
+
+        #next {
+            right: 10px;
+        }
+
+        #prev:hover,
+        #next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="sliderContainer">
+        <button id="prev">Prev</button>
+        <img src="" id="sliderImage" alt="image-slider">
+        <button id="next">Next</button>
+    </div>
+    <div id="dotsContainer"></div>
+    <script>
+        const images = [
+            "https://cdn.pixabay.com/photo/2024/11/22/10/03/canyon-9215914_1280.jpg",
+            "https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832_640.jpg",
+            "https://cdn.pixabay.com/photo/2018/08/14/13/23/ocean-3605547_640.jpg",
+            "https://cdn.pixabay.com/photo/2024/11/20/05/29/turtle-9210392_640.jpg",
+            "https://cdn.pixabay.com/photo/2024/11/20/05/38/ai-generated-9210410_640.jpg"
+        ];
+
+        let currentIndex = 0;
+        const sliderImage = document.getElementById("sliderImage");
+        const prev = document.getElementById("prev");
+        const next = document.getElementById("next");
+        const dotsContainer = document.getElementById("dotsContainer");
+        let sliderInterval;
+
+        // Function to update the image and dots
+        function updateImage() {
+            sliderImage.src = images[currentIndex];
+            sliderImage.alt = `Image ${currentIndex + 1}`;
+            updateDots();
+        }
+
+        // Function to start the slider
+        function sliderShow() {
+            sliderInterval = setInterval(() => {
+                currentIndex = (currentIndex + 1) % images.length;
+                updateImage();
+            }, 2000);
+        }
+
+        // Function to pause the slider
+        function pauseSlider() {
+            clearInterval(sliderInterval);
+        }
+
+        // Function to create dots
+        function createDots() {
+            images.forEach((_, index) => {
+                const dot = document.createElement("div");
+                dot.classList.add("dot");
+                if (index === currentIndex) {
+                    dot.classList.add("active");
+                }
+                dot.addEventListener("click", () => {
+                    pauseSlider();
+                    currentIndex = index;
+                    updateImage();
+                    sliderShow();
+                });
+                dotsContainer.appendChild(dot);
+            });
+        }
+
+        // Function to update active dot
+        function updateDots() {
+            const dots = document.querySelectorAll(".dot");
+            dots.forEach((dot, index) => {
+                dot.classList.toggle("active", index === currentIndex);
+            });
+        }
+
+        // Event listeners for Prev and Next buttons
+        prev.addEventListener("click", () => {
+            pauseSlider();
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            updateImage();
+            sliderShow();
+        });
+
+        next.addEventListener("click", () => {
+            pauseSlider();
+            currentIndex = (currentIndex + 1) % images.length;
+            updateImage();
+            sliderShow();
+        });
+
+        // Initialize slider
+        createDots();
+        updateImage();
+        sliderShow();
+    </script>
+</body>
+
+</html>

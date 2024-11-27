@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <style>
+        #slider-container {
+            width: 300px;
+            height: 200px;
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #ccc;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #slider-container img {
+            max-width: 100%;
+            max-height: 100%;
+            display: block;
+        }
+
+        .button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        #prev {
+            left: 10px;
+        }
+
+        #next {
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="slider-container">
+        <button id="prev" class="button">Previous</button>
+        <img id="slider-image" src="" alt="Slider Image">
+        <button id="next" class="button">Next</button>
+    </div>
+
+    <script>
+        // Array of image URLs
+        const images = [
+            "https://via.placeholder.com/300x200?text=Image+1",
+            "https://via.placeholder.com/300x200?text=Image+2",
+            "https://via.placeholder.com/300x200?text=Image+3",
+            "https://via.placeholder.com/300x200?text=Image+4"
+        ];
+
+        // Variables to track the current index and image element
+        let currentIndex = 0;
+        const sliderImage = document.getElementById("slider-image");
+
+        // Function to update the displayed image
+        function updateImage() {
+            sliderImage.src = images[currentIndex]; // Set the image source
+            sliderImage.alt = `Image ${currentIndex + 1}`; // Update the alt text
+        }
+
+        // Event listeners for Previous and Next buttons
+        document.getElementById("prev").addEventListener("click", function () {
+            currentIndex = (currentIndex - 1 + images.length) % images.length; // Decrement index and wrap around
+            updateImage();
+        });
+
+        document.getElementById("next").addEventListener("click", function () {
+            currentIndex = (currentIndex + 1) % images.length; // Increment index and wrap around
+            updateImage();
+        });
+
+        // Initialize the slider with the first image
+        updateImage();
+    </script>
+</body>
+</html>

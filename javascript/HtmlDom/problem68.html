@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Dropdown</title>
+</head>
+<body>
+    <h1>Dynamic Dropdown Menu</h1>
+    <select id="dropdownMenu">
+        <option value="">--Select an option--</option>
+    </select>
+    <button id="populateDropdown">Populate Dropdown</button>
+
+    <script>
+        // Sample data for the dropdown menu
+        const items = ["Apple", "Banana", "Cherry", "Date", "Elderberry", "Fig", "Grapes"];
+
+        // Reference to the dropdown menu
+        const dropdownMenu = document.getElementById("dropdownMenu");
+
+        // Reference to the button
+        const populateButton = document.getElementById("populateDropdown");
+
+        // Function to populate the dropdown menu
+        function populateDropdown() {
+            // Clear existing options (except the default one)
+            dropdownMenu.innerHTML = '<option value="">--Select an option--</option>';
+
+            // Loop through the items array and create <option> elements
+            items.forEach((item) => {
+                const option = document.createElement("option"); // Create <option> element
+                option.value = item.toLowerCase(); // Set value (lowercased version of the item)
+                option.textContent = item; // Set display text
+                dropdownMenu.appendChild(option); // Append the option to the dropdown
+            });
+        }
+
+        // Add event listener to the button
+        populateButton.addEventListener("click", populateDropdown);
+    </script>
+</body>
+</html>

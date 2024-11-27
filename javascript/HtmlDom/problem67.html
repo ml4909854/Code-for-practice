@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <style>
+        #cartItems div {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Shopping Cart</h1>
+    <div id="cartItems">
+        <p>Your cart is empty.</p>
+    </div>
+    <button id="addItem">Add Item</button>
+    <button id="clearCart">Clear Cart</button>
+
+    <script>
+        // 1. Initialize Cart
+        let cart = [];
+
+        // Load existing cart data from localStorage, if available
+        if (localStorage.getItem("cart")) {
+            cart = JSON.parse(localStorage.getItem("cart"));
+        }
+
+        // 2. Function to Save Cart to localStorage
+        function saveCartToLocalStorage() {
+            localStorage.setItem("cart", JSON.stringify(cart));
+        }
+
+        // 3. Function to Update Cart Display
+        function updateCartDisplay() {
+            const cartItemsDiv = document.getElementById("cartItems");
+
+            // Clear the current cart display
+            cartItemsDiv.innerHTML = "";
+
+            // Check if the cart is empty
+            if (cart.length === 0) {
+                cartItemsDiv.innerHTML = "<p>Your cart is empty.</p>";
+                return;
+            }
+
+            // Display each item in the cart
+            cart.forEach((item, index) => {
+                const itemDiv = document.createElement("div");
+                itemDiv.innerHTML = `
+                    ${item} 
+                    <button onclick="removeItem(${index})">Remove</button>
+                `;
+                cartItemsDiv.appendChild(itemDiv);
+            });
+        }
+
+        // 4. Function to Add an Item to the Cart
+        document.getElementById("addItem").addEventListener("click", function() {
+            const newItem = `Item ${cart.length + 1}`; // Generate a new item name
+            cart.push(newItem); // Add item to cart array
+            saveCartToLocalStorage(); // Save cart to localStorage
+            updateCartDisplay(); // Update the display
+        });
+
+        // 5. Function to Remove an Item from the Cart
+        function removeItem(index) {
+            cart.splice(index, 1); // Remove item from cart array
+            saveCartToLocalStorage(); // Update localStorage
+            updateCartDisplay(); // Update the display
+        }
+
+        // 6. Function to Clear the Cart
+        document.getElementById("clearCart").addEventListener("click", function() {
+            cart = []; // Empty the cart array
+            saveCartToLocalStorage(); // Clear localStorage
+            updateCartDisplay(); // Update the display
+        });
+
+        // 7. Initialize Display on Page Load
+        updateCartDisplay();
+    </script>
+</body>
+</html>
