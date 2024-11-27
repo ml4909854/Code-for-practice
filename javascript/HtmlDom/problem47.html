@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automatic slider</title>
+</head>
+
+<body>
+    <style>
+        #sliderContainer {
+            width: 100%;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+
+
+        }
+
+        #sliderImage {
+            width: inherit;
+            height: inherit;
+
+        }
+
+        #prev,
+        #next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+
+        }
+
+        #prev {
+            left: 10px;
+        }
+
+        #next {
+            right: 10px;
+        }
+
+
+        #dotsContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            margin: 0 5px;
+            border-radius: 50%;
+            background-color: gray;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .dot.active {
+            background-color: black;
+        }
+    </style>
+    <div id="sliderContainer">
+        <button id="prev">Prev</button>
+        <img src="" id="sliderImage" alt="image-slider">
+        <button id="next">Next</button>
+    </div>
+    <div id="dotsContainer"> </div>
+
+    <script>
+
+        let sliderContainer = document.getElementById("sliderContainer")
+        let sliderImage = document.getElementById("sliderImage")
+        let dotsContainer = document.getElementById("dotsContainer")
+        let prev = document.getElementById("prev")
+        let next = document.getElementById("next")
+
+        let currentIndex = 0
+        let IntervalClear;
+        let images = [
+            "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_640.jpg",
+            "https://cdn.pixabay.com/photo/2024/11/19/13/56/crow-9209023_640.jpg",
+            "https://cdn.pixabay.com/photo/2024/11/17/23/06/ai-generated-9204951_640.jpg",
+            "https://cdn.pixabay.com/photo/2024/11/22/05/12/sulphur-crested-cockatoo-9215356_640.jpg",
+            "https://cdn.pixabay.com/photo/2024/11/02/05/13/winter-9168141_640.jpg",
+            "https://cdn.pixabay.com/photo/2024/11/20/06/04/winter-9210454_640.jpg",
+            "https://cdn.pixabay.com/photo/2024/11/23/01/32/waterfall-9217946_640.jpg"
+        ]
+
+        function showImage() {
+            sliderImage.src = images[currentIndex]
+            sliderImage.alt = `images ${currentIndex + 1}`
+            updateDots()
+
+        }
+        function pauseInterval() {
+            clearInterval(IntervalClear)
+        }
+
+        function ImageSlider() {
+            IntervalClear = setInterval(() => {
+                currentIndex = (currentIndex + 1) % images.length
+                showImage()
+            }, 2000);
+        }
+
+        prev.addEventListener("click", function () {
+            pauseInterval()
+            currentIndex = (currentIndex - 1 + images.length) % images.length
+            showImage()
+        })
+        next.addEventListener("click", function () {
+            pauseInterval()
+            currentIndex = (currentIndex + 1) % images.length
+            showImage()
+        })
+
+
+        function createDots() {
+            images.forEach((_, index) => {
+                const dot = document.createElement("div");
+                dot.classList.add("dot");
+                if (index === currentIndex) {
+                    dot.classList.add("active");
+                }
+                dot.addEventListener("click", function () {
+                    pauseInterval()
+                    currentIndex = index
+                    showImage()
+                    ImageSlider()
+                })
+                dotsContainer.appendChild(dot)
+
+            })
+        }
+
+        function updateDots() {
+            const dots = document.querySelectorAll(".dot");
+            dots.forEach((dot, index) => {
+                dot.classList.toggle("active", index === currentIndex);
+            });
+        }
+
+
+
+
+
+
+
+
+
+
+
+        updateDots()
+        createDots()
+        ImageSlider()
+
+    </script>
+</body>
+
+</html>

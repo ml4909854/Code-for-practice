@@ -1,11 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Dynamic FAQ Section</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-item {
+            margin-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: #f4f4f4;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .faq-question:hover {
+            background-color: #eaeaea;
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 10px;
+            background-color: #fafafa;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 18px;
+            transition: transform 0.3s;
+        }
+
+        .faq-question.active::after {
+            content: '-';
+        }
+    </style>
 </head>
+
 <body>
-    
+    <div class="faq-container">
+        <div class="faq-item">
+            <div class="faq-question">What is JavaScript?</div>
+            <div class="faq-answer">JavaScript is a programming language used to create dynamic and interactive content on websites.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">How does CSS work?</div>
+            <div class="faq-answer">CSS (Cascading Style Sheets) is used to style HTML elements by applying rules for layout, colors, fonts, and more.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">What is HTML?</div>
+            <div class="faq-answer">HTML (HyperText Markup Language) is the standard language used to create and structure content on the web.</div>
+        </div>
+    </div>
+
+    <script>
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            const answer = item.querySelector('.faq-answer');
+
+            question.addEventListener('click', () => {
+                const isActive = question.classList.contains('active');
+
+                // Hide all answers
+                faqItems.forEach(faq => {
+                    faq.querySelector('.faq-question').classList.remove('active');
+                    faq.querySelector('.faq-answer').style.display = 'none';
+                });
+
+                // Toggle current question
+                if (!isActive) {
+                    question.classList.add('active');
+                    answer.style.display = 'block';
+                }
+            });
+        });
+    </script>
 </body>
+
 </html>
