@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todolist</title>
+</head>
+
+<body>
+
+    <div>
+        <h1>This is the task app for You</h1>
+        <input type="text" name="" id="tasksInput">
+        <button id="addTask" onclick="addNewTask()">addtask</button>
+    </div>
+    <div>
+        <ol id="listItem">
+
+        </ol>
+    </div>
+
+    <script>
+
+        let tasksInput = document.getElementById("tasksInput")
+        let addTaskbtn = document.getElementById("addTask")
+        let listItem = document.getElementById("listItem")
+
+        const tasks = JSON.parse(localStorage.getItem("tasks"))
+
+        function DisplayTask() {
+            listItem.innerHTML = ""
+            tasks.forEach((task, index) => {
+                let li = document.createElement("li")
+                li.innerHTML = `
+        <span>${task}</span>
+        <button onclick = "editTask(${index})">edit</button>
+        <button onclick = "DeleteTask(${index})">Delete</button>
+        `
+                listItem.appendChild(li)
+            });
+        }
+        function saveTask(){
+            localStorage.setItem("tasks" , JSON.stringify(tasks))
+        }
+
+        DisplayTask()
+
+        function addNewTask(){
+            const newTask = tasksInput.value.trim()
+            if(newTask){
+                tasks.push(newTask)
+                saveTask()
+                DisplayTask()
+            }
+        }
+
+        function editTask(index){
+            const editTaskValue =prompt("Edit a new value" , tasks[index]) 
+            if(editTaskValue !== "" && editTaskValue!== null){
+                tasks[index] = editTaskValue.trim()
+                saveTask()
+                DisplayTask()
+            }
+        }
+
+        function DeleteTask(index){
+            tasks.splice(index , 1) // means task is delete
+            saveTask()
+            DisplayTask()
+        } 
+
+
+
+    </script>
+</body>
+
+</html>
