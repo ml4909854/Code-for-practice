@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filter Search Input</title>
+    <style>
+        .item {
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Search Filter</h1>
+    <input type="text" name="" id="searchInput" placeholder="Search items...">
+    <ul id="itemList">
+        <li class="item">Apple</li>
+        <li class="item">Banana</li>
+        <li class="item">Cherry</li>
+        <li class="item">Date</li>
+        <li class="item">Grapes</li>
+        <li class="item">Orange</li>
+        <li class="item">Pineapple</li>
+    </ul>
+
+    <script>
+        let searchInput = document.getElementById("searchInput");
+        let items = document.querySelectorAll(".item"); // Correct class selector
+
+        searchInput.addEventListener("input", function () {
+            const searchValue = searchInput.value.trim().toLowerCase(); // Convert to lowercase
+
+            items.forEach((item) => {
+                const text = item.textContent.toLowerCase(); // Convert item text to lowercase
+                if (text.includes(searchValue)) {
+                    item.style.display = ""; // Show matching items
+                } else {
+                    item.style.display = "none"; // Hide non-matching items
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
