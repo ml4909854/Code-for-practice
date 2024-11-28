@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Modal with Transitions</title>
+    <style>
+        /* General styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        /* Modal overlay */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s, opacity 0.3s ease-in-out;
+        }
+
+        /* Modal box */
+        .modal {
+            background-color: #fff;
+            padding: 20px;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transform: scale(0.8);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .modal-header {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .modal-body {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        /* Close button */
+        .close-btn {
+            background-color: #ff5c5c;
+            border: none;
+            color: #fff;
+            font-size: 14px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Active modal */
+        .modal-overlay.show {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .modal-overlay.show .modal {
+            transform: scale(1);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Responsive Modal with Transitions</h1>
+    <button id="openModal">Open Modal</button>
+
+    <!-- Modal structure -->
+    <div id="modalOverlay" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">Modal Title</div>
+            <div class="modal-body">This is a responsive modal with smooth transitions.</div>
+            <button class="close-btn" id="closeModal">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // Get elements
+        const openModalBtn = document.getElementById('openModal');
+        const closeModalBtn = document.getElementById('closeModal');
+        const modalOverlay = document.getElementById('modalOverlay');
+
+        // Open modal
+        openModalBtn.addEventListener('click', () => {
+            modalOverlay.classList.add('show');
+        });
+
+        // Close modal
+        closeModalBtn.addEventListener('click', () => {
+            modalOverlay.classList.remove('show');
+        });
+
+        // Close modal when clicking outside of it
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) {
+                modalOverlay.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+
+</html>
