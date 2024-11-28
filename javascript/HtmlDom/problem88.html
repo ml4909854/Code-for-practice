@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form with Multiple Fields and Table Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="text"], input[type="email"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 30px;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
+        .saved-message {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="form-container">
+        <h2>Submit Your Information</h2>
+        <form id="userForm">
+            <label for="userName">Name:</label>
+            <input type="text" id="userName" name="userName" placeholder="Enter your name" required>
+
+            <label for="userEmail">Email:</label>
+            <input type="email" id="userEmail" name="userEmail" placeholder="Enter your email" required>
+
+            <label for="userAge">Age:</label>
+            <input type="number" id="userAge" name="userAge" placeholder="Enter your age" required>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <div id="savedMessage" class="saved-message"></div>
+    </div>
+
+    <div class="form-container">
+        <h2>Saved Data</h2>
+        <table id="dataTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Age</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Saved data will be inserted here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Get elements
+        const userName = document.getElementById('userName');
+        const userEmail = document.getElementById('userEmail');
+        const userAge = document.getElementById('userAge');
+        const userForm = document.getElementById('userForm');
+        const savedMessage = document.getElementById('savedMessage');
+        const dataTable = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
+
+        // Load saved data on page load
+        window.onload = function () {
+            loadSavedData();
+        }
+
+        // Handle form submission
+        userForm.addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent page reload on form submission
+
+            const name = userName.value.trim();
+            const email = userEmail.value.trim();
+            const age = userAge.value.trim();
+
+            if (name && email && age) {
+                const userData = { name, email, age };
+
+                // Get existing data from localStorage
+                const savedData = JSON.parse(localStorage.getItem('userData')) || [];
+
+                // Add new entry to the saved data
+                savedData.push(userData);
+
+                // Save the updated data to localStorage
+                localStorage.setItem('userData', JSON.stringify(savedData));
+
+                // Clear input fields
+                userName.value = '';
+                userEmail.value = '';
+                userAge.value = '';
+
+                // Display saved message
+                savedMessage.textContent = `Data for ${name} has been saved.`;
+
+                // Reload the saved data in the table
+                loadSavedData();
+            }
+        });
+
+        // Load saved data from localStorage and display in the table
+        function loadSavedData() {
+            const savedData = JSON.parse(localStorage.getItem('userData')) || [];
+            dataTable.innerHTML = ''; // Clear current table data
+
+            // Loop through each saved entry and add a row to the table
+            savedData.forEach(data => {
+                const row = dataTable.insertRow();
+                row.innerHTML = `
+                    <td>${data.name}</td>
+                    <td>${data.email}</td>
+                    <td>${data.age}</td>
+                `;
+            });
+        }
+    </script>
+
+</body>
+
+</html>
