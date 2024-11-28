@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <img src="https://cdn.pixabay.com/photo/2023/02/08/06/29/fashion-7775824_640.jpg"
+        style="width: 100px; height: 100px;" alt=""><br>
+    <button id="likeBtn">like</button> <span id="likeCounter">0</span>
+
+    <button id="dislikeBtn">Dislike</button><span id="dislikeCounter">0</span>
+
+    <script>
+
+        let likeBtn = document.getElementById("likeBtn")
+        let dislikeBtn = document.getElementById("dislikeBtn")
+        let likeCounter = document.getElementById("likeCounter")
+        let dislikeCounter = document.getElementById("dislikeCounter")
+
+        let Likecount = 0
+        let dislikecount = 0
+        likeBtn.addEventListener("click", function () {
+            likeCounter.innerHTML = Likecount++
+        })
+        dislikeBtn.addEventListener("click", function () {
+            dislikeCounter.innerHTML = dislikecount++
+        })
+    </script>
+
+</body>
+
+</html>
