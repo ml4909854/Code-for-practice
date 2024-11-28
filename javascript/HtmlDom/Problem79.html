@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Modal</title>
+    <style>
+        .mahesh {
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            position: fixed;
+            left: 0;
+            top: 0;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .sangeeta {
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 300px;
+        }
+
+        #open-modal {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #open-modal:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>Welcome to the Dynamic Modal Example</h1>
+        <button id="open-modal">Open Modal</button>
+    </div>
+
+    <script>
+        const openModal = document.getElementById("open-modal");
+
+        function showModal() {
+            // Create modal overlay
+            const modal = document.createElement("div");
+            modal.classList.add("mahesh");
+
+            // Create modal content
+            const modalContent = document.createElement("div");
+            modalContent.classList.add("sangeeta");
+            modalContent.innerHTML = `
+                <h2>Custom Modal</h2>
+                <p>This is a dynamically created modal window.</p>
+                <button id="close-modal-btn">Close</button>
+            `;
+
+            // Append modal content to modal overlay
+            modal.appendChild(modalContent);
+
+            // Append modal overlay to the body
+            document.body.appendChild(modal);
+
+            // Add functionality to close the modal
+            const closeModalBtn = document.getElementById("close-modal-btn");
+            closeModalBtn.addEventListener("click", function () {
+                document.body.removeChild(modal); // Remove the modal from the DOM
+            });
+
+            modal.addEventListener("click" , function(){
+                if(event.target === modal){
+                    document.body.removeChild(modal)
+                }
+            })
+        }
+
+        // Open modal on button click
+        openModal.addEventListener("click", function () {
+            showModal();
+        });
+    </script>
+</body>
+
+</html>

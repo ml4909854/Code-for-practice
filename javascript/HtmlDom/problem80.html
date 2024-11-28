@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problem 80</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>To-Do List</h1>
+        <input type="text" id="taskInput" placeholder="Enter a task..." />
+        <button id="addTaskBtn" onclick="addTask()">Add Task</button>
+
+        <ul id="taskList" class="task-list">
+            <!-- Task list will appear here -->
+        </ul>
+    </div>
+
+    <script>
+
+        let taskInput = document.getElementById("taskInput")
+        let addTaskBtn = document.getElementById("addTaskBtn")
+        let taskList = document.getElementById("taskList")
+
+
+        let tasks = JSON.parse(localStorage.getItem("tasks")) || []
+
+
+        function saveTasks() {
+            localStorage.setItem("tasks", JSON.stringify(tasks))
+        }
+        function DisplayTask() {
+            taskList.innerHTML = ""
+            tasks.forEach((task, index) => {
+                const li = document.createElement("li")
+                li.innerHTML = `
+                 <span>${task}</span>
+                 <button onclick = "editTask(${index})">Edit</button>
+                 <button onclick = "DeleteTask(${index})">Delete</button>
+                 `
+                taskList.append(li)
+            });
+        }
+
+        function addTask() {
+            const task = taskInput.value.trim()
+            if (task !== "") {
+                tasks.push(task)
+                saveTasks()
+                // localStorage.setItem("tasks" , JSON.stringify(tasks))
+                DisplayTask()
+            }
+        }
+
+        function editTask(index) {
+            const updateTask = prompt("Edit Your Task", tasks[index])
+            if (updateTask) {
+                tasks[index] = updateTask.trim()
+                saveTasks()
+                // localStorage.setItem("tasks" , JSON.stringify(tasks))
+                DisplayTask()
+            }
+        }
+
+        function DeleteTask(index) {
+            tasks.splice(index, 1)
+            saveTasks()
+            DisplayTask()
+        }
+    </script>
+</body>
+
+</html>
