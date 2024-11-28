@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form with Table</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            padding: 10px;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Form with Table</h1>
+    <form id="userForm">
+        <span>Name :</span> <input type="text" id="userName" name="userName" placeholder="Enter your Name..."><br><br>
+        <span>Email :</span> <input type="text" id="userEmail" name="userEmail" placeholder="Enter your Email..."><br><br>
+        <span>Age :</span><input type="text" id="userAge" name="userAge" placeholder="Enter your Age..."><br><br>
+        <button type="submit">Submit</button>
+    </form>
+    <div id="tableContainer">
+        <table>
+            <thead>
+                <tr>
+                    <th>Serial No</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Age</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+                <!-- Data will be inserted here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        const userName = document.getElementById("userName");
+        const userEmail = document.getElementById("userEmail");
+        const userAge = document.getElementById("userAge");
+        const userForm = document.getElementById("userForm");
+        const tbody = document.getElementById("tbody");
+
+        // Load saved data from localStorage when the page loads
+        window.onload = function() {
+            loadSavedData();
+        };
+
+        // Function to save data to localStorage and update the table
+        function saveData() {
+            const name = userName.value.trim();
+            const email = userEmail.value.trim();
+            const age = userAge.value.trim();
+
+            if (name && email && age) {
+                const userData = { name, email, age };
+
+                // Get existing data from localStorage
+                const savedData = JSON.parse(localStorage.getItem('userData')) || [];
+                if (!Array.isArray(savedData)) {
+            savedData = [];
+        }
+                // Add the new entry to the saved data
+                savedData.push(userData);
+
+                // Save updated data back to localStorage
+                localStorage.setItem('userData', JSON.stringify(savedData));
+
+                // Reload the saved data in the table
+                loadSavedData();
+
+                // Clear the form fields
+                userName.value = '';
+                userEmail.value = '';
+                userAge.value = '';
+            }
+        }
+
+        // Function to load saved data from localStorage and display it in the table
+        function loadSavedData() {
+            const savedData = JSON.parse(localStorage.getItem('userData')) || [];
+            tbody.innerHTML = ''; // Clear current table data
+
+            savedData.forEach((data, index) => {
+                const row = tbody.insertRow();
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${data.name}</td>
+                    <td>${data.email}</td>
+                    <td>${data.age}</td>
+                `;
+            });
+        }
+
+        // Handle form submission
+        userForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+            saveData();
+        });
+    </script>
+
+</body>
+
+</html>
