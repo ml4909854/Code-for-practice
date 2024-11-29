@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Step Form Wizard</title>
+    <style>
+        /* Basic styling for the form */
+        .form-step {
+            display: none;
+        }
+
+        .form-step.active {
+            display: block;
+        }
+
+        .buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .buttons button {
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Multi-Step Form Wizard</h1>
+
+<form id="formWizard">
+    <!-- Step 1 -->
+    <div class="form-step active" id="step1">
+        <h3>Step 1: Personal Information</h3>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="form-step" id="step2">
+        <h3>Step 2: Address Information</h3>
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" required>
+        <br><br>
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city" required>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="form-step" id="step3">
+        <h3>Step 3: Review Information</h3>
+        <p>Please review your information:</p>
+        <div id="reviewData"></div>
+    </div>
+
+    <!-- Navigation buttons -->
+    <div class="buttons">
+        <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+        <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+        <button type="submit" id="submitBtn" style="display: none;">Submit</button>
+    </div>
+</form>
+
+<script>
+    let currentStep = 0; // Track the current step
+
+    // Function to show the current step and hide others
+    function showStep(step) {
+        const steps = document.querySelectorAll('.form-step');
+        steps.forEach((stepElem, index) => {
+            if (index === step) {
+                stepElem.classList.add('active');
+            } else {
+                stepElem.classList.remove('active');
+            }
+        });
+    }
+
+    // Function to handle the next and previous navigation
+    function nextPrev(stepChange) {
+        // Get the form fields of the current step
+        const steps = document.querySelectorAll('.form-step');
+        const currentStepFields = steps[currentStep];
+
+        // Handle step validation
+        if (currentStepFields.querySelector("input") && !currentStepFields.querySelector("input").checkValidity()) {
+            alert("Please fill in all the fields.");
+            return;
+        }
+
+        // Hide current step
+        currentStep += stepChange;
+
+        // Check if step is valid (0 <= currentStep < total steps)
+        if (currentStep < 0 || currentStep >= steps.length) {
+            currentStep -= stepChange;  // Prevent going out of bounds
+            return;
+        }
+
+        // Show the current step
+        showStep(currentStep);
+
+        // Handle the Next button logic
+        if (currentStep === steps.length - 1) {
+            document.getElementById("nextBtn").style.display = "none";
+            document.getElementById("submitBtn").style.display = "inline-block";
+        } else {
+            document.getElementById("nextBtn").style.display = "inline-block";
+            document.getElementById("submitBtn").style.display = "none";
+        }
+
+        // Handle the Previous button visibility
+        if (currentStep === 0) {
+            document.getElementById("prevBtn").style.display = "none";
+        } else {
+            document.getElementById("prevBtn").style.display = "inline-block";
+        }
+
+        // Update the review step with data
+        if (currentStep === 2) {
+            document.getElementById('reviewData').innerHTML = `
+                <p><strong>Name:</strong> ${document.getElementById("name").value}</p>
+                <p><strong>Email:</strong> ${document.getElementById("email").value}</p>
+                <p><strong>Address:</strong> ${document.getElementById("address").value}</p>
+                <p><strong>City:</strong> ${document.getElementById("city").value}</p>
+            `;
+        }
+    }
+
+    // Show the first step initially
+    showStep(currentStep);
+
+    // Handle form submission
+    document.getElementById('formWizard').addEventListener('submit', function(event) {
+        event.preventDefault();
+        alert("Form Submitted Successfully!");
+    });
+</script>
+
+</body>
+</html>
