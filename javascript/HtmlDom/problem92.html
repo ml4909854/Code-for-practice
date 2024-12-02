@@ -1,11 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Forw wizard</title>
 </head>
+
 <body>
-    
+    <style>
+        .step {
+            display: none;
+        }
+
+        .step.active {
+            display: block;
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+    </style>
+
+    <form id="multipleStepForm">
+        <div class="step active">
+            <h2>step 1</h2>
+            <label for="name">Name :</label>
+            <input type="text" name="name" id="name" required>
+        </div>
+
+        <div class="step">
+            <h2>step 2</h2>
+            <label for="name">Email :</label>
+            <input type="Email" name="Email" id="email" required>
+        </div>
+        <div class="step">
+            <h2>step 1</h2>
+            <label for="name">Password :</label>
+            <input type="password" name="password" id="password" required>
+        </div>
+
+        <div class="buttons">
+            <button type="button" id="prevBtn">Previous</button>
+            <button type="button" id="nextBtn" disabled>Next</button>
+            <button type="submit" id="submitBtn" style="display: none;" disabled>submit</button>
+        </div>
+    </form>
+
+    <script>
+
+        const steps = document.querySelectorAll(".step")
+        const prevBtn = document.getElementById("prevBtn")
+        const nextBtn = document.getElementById("nextBtn")
+        const submitBtn = document.getElementById("submitBtn")
+
+        let currentIndex = 0
+
+        function ShowSteps(currentIndex) {
+
+            steps.forEach((step, index) => {
+                step.classList.toggle("active", index === currentIndex)
+            })
+
+            prevBtn.style.display = currentIndex === 0 ? "none" : "inline-block"
+            nextBtn.style.display = currentIndex === steps.length - 1 ? "none" : "inline-block"
+            submitBtn.style.display = currentIndex === steps.length - 1 ? "inline-block" : "none"
+
+            validStep()
+        }
+
+        function validStep() {
+            const Inputs = steps[currentIndex].querySelectorAll("input")
+            let isValid = true
+
+            Inputs.forEach((input)=>{
+                if(!input.value.trim()){
+                    isValid = false
+                }
+
+            })
+            nextBtn.disabled = !isValid
+            submitBtn.disabled = !isValid
+        }
+
+        steps.forEach((step)=>{
+            step.addEventListener("input" , validStep)
+        })
+
+        ShowSteps(currentIndex)
+
+        nextBtn.addEventListener("click", function () {
+            if (currentIndex < steps.length - 1) {
+                currentIndex++
+                ShowSteps(currentIndex)
+            }
+        })
+
+        prevBtn.addEventListener("click", function () {
+            if (currentIndex > 0) {
+                currentIndex--
+                ShowSteps(currentIndex)
+            }
+        })
+
+        const form = document.getElementById("multipleStepForm")
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault()
+            alert("form submitted")
+        })
+    </script>
 </body>
+
 </html>
