@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CountDisplay</title>
+</head>
+
+<body>
+    <div>
+        <h1>Countdown timer</h1>
+        <input type="number" name="" id="hours" min="0">
+        <input type="number" name="" id="minutes" min="0">
+        <input type="number" name="" id="seconds" min="0">
+        <button id="startBtn">start</button>
+
+    </div>
+    <div id="display">
+        00:00:00
+    </div>
+
+    <script>
+        const hoursInput = document.getElementById("hours")
+        const minutesInput = document.getElementById("minutes")
+        const secondsInput = document.getElementById("seconds")
+        const submitBtn = document.getElementById("startBtn")
+        const display = document.getElementById("display")
+        let countInterval;
+
+        function CountDown() {
+            let totalSeconds = parseInt(hoursInput.value || 0) * 3600 +
+                parseInt(minutesInput.value || 0) * 60 +
+                parseInt(secondsInput.value || 0)
+
+            if (isNaN(totalSeconds) || totalSeconds <= 0) {
+                alert("isvalid number")
+                return;
+            }
+
+            submitBtn.disabled = true
+
+            countInterval = setInterval(() => {
+
+                const hours = Math.floor(totalSeconds / 3600)
+                const minutes = Math.floor((totalSeconds % 3600) / 60)
+                const seconds = totalSeconds % 60
+
+                display.textContent = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+                if (totalSeconds <= 0) {
+                    clearInterval(countInterval)
+                    display.textContent = "time's Up!"
+                    submitBtn.disabled = false
+
+                } else {
+                    totalSeconds--
+                }
+            }, 1000);
+        }
+
+        submitBtn.addEventListener("click" , CountDown)
+    </script>
+</body>
+
+</html>
