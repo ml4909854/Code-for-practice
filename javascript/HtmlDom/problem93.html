@@ -1,11 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Toggle Example</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .active {
+            background-color: coral;
+            transform: scale(1.2);
+        }
+    </style>
 </head>
+
 <body>
-    
+    <div class="box" id="myBox"></div>
+    <button id="toggleBtn">Toggle Style</button>
+
+    <script>
+        const box = document.getElementById("myBox");
+        const toggleBtn = document.getElementById("toggleBtn");
+
+        toggleBtn.addEventListener("click", () => {
+            // Toggle the 'active' class on the box
+            box.classList.toggle("active");
+        });
+    </script>
 </body>
+
 </html>
