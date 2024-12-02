@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Search App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+
+        .search-container {
+            margin-top: 20px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .movies-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .movie-card {
+            background-color: white;
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .movie-card img {
+            width: 100%;
+            border-radius: 4px;
+        }
+
+        .movie-card h3 {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+
+        .movie-card p {
+            font-size: 1rem;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Movie Search App</h1>
+    <div class="search-container">
+        <input type="text" id="movie-search" placeholder="Search for movies..." />
+        <button id="search-button">Search</button>
+    </div>
+    <div class="movies-container" id="movies-container"></div>
+
+    <script>
+        // Replace with your actual TMDb API key
+        const API_KEY = 'your_api_key_here';
+        const BASE_URL = 'https://api.themoviedb.org/3';
+
+        const searchButton = document.getElementById('search-button');
+        const searchInput = document.getElementById('movie-search');
+        const moviesContainer = document.getElementById('movies-container');
+
+        // Function to fetch movies based on the search query
+        async function fetchMovies(query) {
+            const url = `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}&language=en-US&page=1`;
+            
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                displayMovies(data.results);
+            } catch (error) {
+                console.error('Error fetching movies:', error);
+            }
+        }
+
+        // Function to display the list of movies
+        function displayMovies(movies) {
+            moviesContainer.innerHTML = ''; // Clear previous results
+            if (movies.length === 0) {
+                moviesContainer.innerHTML = '<p>No movies found</p>';
+                return;
+            }
+
+            movies.forEach(movie => {
+                const movieCard = document.createElement('div');
+                movieCard.classList.add('movie-card');
+                
+                const movieImage = movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : 'https://via.placeholder.com/500x750?text=No+Image';
+                
+                movieCard.innerHTML = `
+                    <img src="${movieImage}" alt="${movie.title}">
+                    <h3>${movie.title}</h3>
+                    <p>${movie.overview.substring(0, 100)}...</p>
+                `;
+
+                moviesContainer.appendChild(movieCard);
+            });
+        }
+
+        // Event listener for the search button
+        searchButton.addEventListener('click', () => {
+            const query = searchInput.value.trim();
+            if (query) {
+                fetchMovies(query);
+            } else {
+                alert('Please enter a search query');
+            }
+        });
+
+        // Optional: Trigger search when pressing the "Enter" key
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                searchButton.click();
+            }
+        });
+    </script>
+
+</body>
+</html>
