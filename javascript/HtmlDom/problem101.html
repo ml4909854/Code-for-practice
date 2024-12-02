@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+            margin: 0;
+        }
+        .profile-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        .profile-container h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .profile-input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .save-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .save-button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="profile-container">
+        <h1>User Profile</h1>
+        <div>
+            <input type="text" id="name" class="profile-input" placeholder="Enter your name" value="John Doe">
+        </div>
+        <div>
+            <input type="email" id="email" class="profile-input" placeholder="Enter your email" value="john@example.com">
+        </div>
+        <div>
+            <textarea id="bio" class="profile-input" placeholder="Enter your bio" rows="4">Hello, I am John Doe. I love coding!</textarea>
+        </div>
+        <button id="saveButton" class="save-button" disabled>Save Changes</button>
+    </div>
+
+    <script>
+        // Get references to DOM elements
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const bioInput = document.getElementById('bio');
+        const saveButton = document.getElementById('saveButton');
+
+        let originalData = {
+            name: nameInput.value,
+            email: emailInput.value,
+            bio: bioInput.value
+        };
+
+        // Enable the Save button if any field is edited
+        function enableSaveButton() {
+            if (
+                nameInput.value !== originalData.name ||
+                emailInput.value !== originalData.email ||
+                bioInput.value !== originalData.bio
+            ) {
+                saveButton.disabled = false;
+            } else {
+                saveButton.disabled = true;
+            }
+        }
+
+        // Listen for changes in the input fields
+        nameInput.addEventListener('input', enableSaveButton);
+        emailInput.addEventListener('input', enableSaveButton);
+        bioInput.addEventListener('input', enableSaveButton);
+
+        // Save changes when the Save button is clicked
+        saveButton.addEventListener('click', () => {
+            // Update original data with the current values
+            originalData.name = nameInput.value;
+            originalData.email = emailInput.value;
+            originalData.bio = bioInput.value;
+
+            // Display a success message
+            alert('Profile updated successfully!');
+
+            // Disable the Save button after saving
+            saveButton.disabled = true;
+        });
+    </script>
+
+</body>
+</html>
