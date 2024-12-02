@@ -1,11 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Custom Dropdown with Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .dropdown {
+            position: relative;
+            width: 300px;
+        }
+
+        .dropdown-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            width: 100%;
+            max-height: 200px;
+            overflow-y: auto;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-top: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: none;
+            z-index: 10;
+        }
+
+        .dropdown-item {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f0f0f0;
+        }
+
+        .dropdown-menu.visible {
+            display: block;
+        }
+    </style>
 </head>
+
 <body>
-    
+    <h1>Custom Dropdown with Search</h1>
+
+    <div class="dropdown">
+        <input type="text" class="dropdown-input" placeholder="Search or select an option..." id="dropdownSearch">
+        <div class="dropdown-menu" id="dropdownMenu">
+            <!-- Options will be populated dynamically -->
+        </div>
+    </div>
+
+    <script>
+        const dropdownInput = document.getElementById('dropdownSearch');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+
+        const options = [
+            'Apple',
+            'Banana',
+            'Cherry',
+            'Date',
+            'Elderberry',
+            'Fig',
+            'Grape',
+            'Honeydew'
+        ];
+
+        // Populate the dropdown menu with options
+        function populateDropdown() {
+            dropdownMenu.innerHTML = '';
+            options.forEach(option => {
+                const item = document.createElement('div');
+                item.textContent = option;
+                item.classList.add('dropdown-item');
+                item.addEventListener('click', () => {
+                    dropdownInput.value = option;
+                    dropdownMenu.classList.remove('visible');
+                });
+                dropdownMenu.appendChild(item);
+            });
+        }
+
+        // Filter options based on input value
+        function filterOptions(query) {
+            const filteredOptions = options.filter(option =>
+                option.toLowerCase().includes(query.toLowerCase())
+            );
+
+            dropdownMenu.innerHTML = '';
+
+            if (filteredOptions.length === 0) {
+                const noResult = document.createElement('div');
+                noResult.textContent = 'No results found';
+                noResult.classList.add('dropdown-item');
+                dropdownMenu.appendChild(noResult);
+                return;
+            }
+
+            filteredOptions.forEach(option => {
+                const item = document.createElement('div');
+                item.textContent = option;
+                item.classList.add('dropdown-item');
+                item.addEventListener('click', () => {
+                    dropdownInput.value = option;
+                    dropdownMenu.classList.remove('visible');
+                });
+                dropdownMenu.appendChild(item);
+            });
+        }
+
+        // Show dropdown menu when input is focused
+        dropdownInput.addEventListener('focus', () => {
+            dropdownMenu.classList.add('visible');
+            filterOptions(dropdownInput.value); // Show all options initially
+        });
+
+        // Hide dropdown menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.dropdown')) {
+                dropdownMenu.classList.remove('visible');
+            }
+        });
+
+        // Filter options dynamically on input
+        dropdownInput.addEventListener('input', (e) => {
+            filterOptions(e.target.value);
+        });
+
+        // Initial population of dropdown
+        populateDropdown();
+    </script>
 </body>
+
 </html>
