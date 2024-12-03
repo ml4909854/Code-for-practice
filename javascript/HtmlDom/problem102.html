@@ -1,0 +1,94 @@
+~
+const tableData = [
+  { id: 1, name: "Alice", age: 25, city: "New York" },
+  { id: 2, name: "Bob", age: 30, city: "Los Angeles" },
+  { id: 3, name: "Charlie", age: 35, city: "Chicago" },
+  { id: 4, name: "David", age: 28, city: "Houston" },
+  { id: 5, name: "Eve", age: 22, city: "Phoenix" },
+  { id: 6, name: "Frank", age: 40, city: "Seattle" },
+  { id: 7, name: "Grace", age: 29, city: "Austin" },
+  { id: 8, name: "Hannah", age: 27, city: "Denver" },
+  { id: 9, name: "Ian", age: 31, city: "Boston" },
+  { id: 10, name: "Jack", age: 34, city: "San Francisco" }
+];
+
+const rowsPerPage = 5;
+let currentPage = 1;
+let sortedColumn = null;
+let sortOrder = "asc";
+
+const tableBody = document.querySelector("tbody");
+const paginationContainer = document.querySelector(".pagination");
+
+// Render table rows
+function renderTableRows(data) {
+  tableBody.innerHTML = "";
+  data.forEach(row => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${row.id}</td>
+      <td>${row.name}</td>
+      <td>${row.age}</td>
+      <td>${row.city}</td>
+    `;
+    tableBody.appendChild(tr);
+  });
+}
+
+// Render pagination buttons
+function renderPagination(totalRows) {
+  paginationContainer.innerHTML = "";
+  const totalPages = Math.ceil(totalRows / rowsPerPage);
+
+  for (let i = 1; i <= totalPages; i++) {
+    const button = document.createElement("button");
+    button.textContent = i;
+    button.classList.toggle("active", i === currentPage);
+    button.disabled = i === currentPage;
+    button.addEventListener("click", () => {
+      currentPage = i;
+      updateTable();
+    });
+    paginationContainer.appendChild(button);
+  }
+}
+
+// Handle sorting
+function sortData(column) {
+  if (sortedColumn === column) {
+    sortOrder = sortOrder === "asc" ? "desc" : "asc";
+  } else {
+    sortedColumn = column;
+    sortOrder = "asc";
+  }
+
+  tableData.sort((a, b) => {
+    if (a[column] < b[column]) return sortOrder === "asc" ? -1 : 1;
+    if (a[column] > b[column]) return sortOrder === "asc" ? 1 : -1;
+    return 0;
+  });
+
+  currentPage = 1; // Reset to first page after sorting
+  updateTable();
+}
+
+// Update table
+function updateTable() {
+  const start = (currentPage - 1) * rowsPerPage;
+  const end = start + rowsPerPage;
+  const paginatedData = tableData.slice(start, end);
+
+  renderTableRows(paginatedData);
+  renderPagination(tableData.length);
+}
+
+// Attach sorting event listeners
+document.querySelectorAll("th").forEach(th => {
+  th.addEventListener("click", () => {
+    const column = th.getAttribute("data-column");
+    sortData(column);
+  });
+});
+
+// Initial table render
+updateTable();
