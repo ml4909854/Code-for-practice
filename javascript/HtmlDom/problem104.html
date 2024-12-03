@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Countdown Clock</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+    input {
+      margin: 10px;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+    .countdown {
+      margin-top: 20px;
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Countdown Clock</h1>
+  <p>Enter a date and time for your countdown:</p>
+  <input type="datetime-local" id="datetimeInput" />
+  <button id="startCountdown">Start Countdown</button>
+  <div class="countdown" id="countdownDisplay"></div>
+
+  <script>
+    const startButton = document.getElementById('startCountdown');
+    const countdownDisplay = document.getElementById('countdownDisplay');
+
+    startButton.addEventListener('click', () => {
+      const userInput = document.getElementById('datetimeInput').value;
+
+      if (!userInput) {
+        countdownDisplay.textContent = 'Please select a date and time.';
+        return;
+      }
+
+      const targetDate = new Date(userInput);
+
+      function updateCountdown() {
+        const currentDate = new Date();
+        const difference = targetDate - currentDate;
+
+        if (difference <= 0) {
+          clearInterval(intervalId);
+          countdownDisplay.textContent = 'Time is up!';
+          return;
+        }
+
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+        countdownDisplay.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+      }
+
+      // Update every second
+      updateCountdown(); // Call immediately to show the countdown instantly
+      const intervalId = setInterval(updateCountdown, 1000);
+    });
+  </script>
+</body>
+</html>
