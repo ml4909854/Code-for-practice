@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transition Example</title>
+    <style>
+        h1 {
+            position: relative; /* Required for positioning */
+            animation: mahesh 1.5s ease-in-out 5; /* Apply animation */
+        }
+
+        @keyframes mahesh {
+            0% {
+                margin-top: 20px; /* Start slightly lower */
+                opacity: 0.5; /* Initial transparency */
+            }
+            100% {
+                margin-top: 0px; /* Final position */
+                opacity: 1; /* Fully visible */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Hi, I love you</h1>
+</body>
+
+</html>
