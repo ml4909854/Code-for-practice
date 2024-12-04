@@ -1,11 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Automatic slider</title>
 </head>
+<style>
+    #sliderContainer {
+        width: 100%;
+        height: 500px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid black;
+    }
+
+    #sliderImage {
+        width: 100%;
+        height: 500px;
+    }
+
+    #prev,
+    #next {
+        position: absolute;
+    }
+
+    #prev {
+        left: 20px;
+    }
+
+    #next {
+        right: 20px;
+    }
+
+    #sliderDots {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        gap: 5px;
+    }
+
+    .dot {
+        width: 10px;
+        height: 10px;
+        border: 1px solid black;
+        border-radius: 50px;
+        transition: all 0.5s;
+    }
+
+    .active {
+        background-color: grey;
+    }
+</style>
+
 <body>
-    
+    <div id="sliderContainer">
+        <button id="prev">Prev</button>
+        <img id="sliderImage" src="" alt="">
+        <button id="next">Next</button>
+
+    </div>
+    <div id="sliderDots"></div>
+
+    <script>
+
+        const sliderContainer = document.getElementById("sliderContainer")
+        const prev = document.getElementById("prev")
+        const sliderImage = document.getElementById("sliderImage")
+        const next = document.getElementById("next")
+        const sliderDots = document.getElementById("sliderDots")
+
+        let currentIndex = 0
+        let clear;
+
+        let Images = [
+            "https://cdn.pixabay.com/photo/2024/05/17/08/58/goosander-8767742_640.jpg",
+            "https://cdn.pixabay.com/photo/2018/12/19/17/08/bokeh-3884425_640.jpg",
+            "https://cdn.pixabay.com/photo/2018/03/30/23/24/wood-3276881_640.jpg",
+            "https://cdn.pixabay.com/photo/2017/08/06/20/15/water-2595899_640.jpg",
+            "https://cdn.pixabay.com/photo/2016/10/07/13/20/tangerines-1721563_640.jpg",
+            "https://cdn.pixabay.com/photo/2023/06/18/12/17/meadow-8071932_1280.jpg",
+            "https://cdn.pixabay.com/photo/2013/05/09/09/06/waves-circles-109964_640.jpg",
+        ]
+        function ShowSlide() {
+            sliderImage.src = Images[currentIndex]
+            sliderImage.alt = `Images ${currentIndex + 1}`
+            UpdateDots()
+        }
+
+
+        function AutoSlide() {
+            clear = setInterval(() => {
+                currentIndex = (currentIndex + 1) % Images.length
+                ShowSlide()
+            }, 2000);
+        }
+
+        function PauseInterval() {
+            clearInterval(clear)
+        }
+        prev.addEventListener("click", function () {
+            PauseInterval()
+            currentIndex = (currentIndex - 1 + Images.length) % Images.length
+            ShowSlide()
+        })
+        next.addEventListener("click", function () {
+            PauseInterval()
+            currentIndex = (currentIndex + 1) % Images.length
+            ShowSlide()
+        })
+
+        function CreateDots() {
+            Images.forEach((_, index) => {
+                const dot = document.createElement("div")
+                dot.classList.add("dot")
+                if (index === currentIndex) {
+                    dot.classList.add("active")
+                }
+
+                dot.addEventListener("click", function () {
+                    PauseInterval()
+                    currentIndex = index
+                    ShowSlide()
+                    AutoSlide()
+                })
+                sliderDots.appendChild(dot)
+            })
+        }
+
+
+        function UpdateDots() {
+            let dots = document.querySelectorAll(".dot")
+            dots.forEach((dot, index) => {
+                dot.classList.toggle("active", index === currentIndex)
+            })
+        }
+
+        CreateDots()
+
+        AutoSlide()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
 </body>
+
 </html>
