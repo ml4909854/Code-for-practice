@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CountDown timer with clock</title>
+</head>
+
+<body>
+    <div>
+        <h1>Countdown timer with date</h1>
+        <input type="datetime-local" name="" id="dateInput">
+        <button id="startBtn">StartButton</button>
+        <div id="countDisplay"></div>
+
+    </div>
+    <script>
+        // const dataInput  = document.getElementById("dateInput")
+        const startBtn = document.getElementById("startBtn")
+        const countDisplay = document.getElementById("countDisplay")
+
+        startBtn.addEventListener("click", function () {
+            let dateInput = document.getElementById("dateInput")
+
+            if (!dateInput.value) {
+                countDisplay.innerHTML = "please enter some date"
+                return
+            }
+            const targetDate = new Date(dateInput.value)
+
+            function StartCountdown() {
+                const currentDate = new Date()
+                const difference = targetDate - currentDate
+                if (difference <= 0) {
+                    clearInterval(intervalId);
+                    countDisplay.textContent = 'Time is up!';
+                    return;
+                }
+
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                countDisplay.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            }
+            StartCountdown()
+            let intervalId = setInterval(StartCountdown, 1000)
+        })
+    </script>
+</body>
+
+</html>
