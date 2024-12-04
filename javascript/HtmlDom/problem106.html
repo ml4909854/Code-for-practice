@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Pricing Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .calculator {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .price-display {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="calculator">
+        <h2>Dynamic Pricing Calculator</h2>
+        <div class="form-group">
+            <label for="productType">Product Type:</label>
+            <select id="productType">
+                <option value="50">Basic ($50)</option>
+                <option value="100">Standard ($100)</option>
+                <option value="150">Premium ($150)</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" min="1" value="1">
+        </div>
+        <div class="form-group">
+            <label>Add-ons:</label>
+            <input type="checkbox" id="addon1" value="10"> Gift Wrapping ($10)<br>
+            <input type="checkbox" id="addon2" value="20"> Express Shipping ($20)
+        </div>
+        <div class="price-display" id="totalPrice">$0.00</div>
+    </div>
+
+    <script>
+       
+       const productType = document.getElementById("productType")
+      const quantity = document.getElementById("quantity")
+      const addon1 = document.getElementById("addon1")
+      const addon2 = document.getElementById("addon2")
+      const totalPrice = document.getElementById("totalPrice")
+
+
+function CalculatePrice(){
+    const baseprice = parseInt(productType.value)
+    const quantityprice = parseInt(quantity.value) || 1;
+    
+    // add ons
+    const addon1price = addon1.checked ? parseFloat(addon1.value) :0
+    const addon2price = addon2.checked ? parseFloat(addon2.value):0
+
+    totalPrice.innerHTML = (baseprice+addon1price+addon2price)*quantityprice
+
+}
+
+
+productType.addEventListener("change" , CalculatePrice)
+quantity.addEventListener("input" , CalculatePrice)
+addon1.addEventListener("change" , CalculatePrice)
+addon2.addEventListener("change" , CalculatePrice)
+CalculatePrice()
+    </script>
+</body>
+
+
+</html>
