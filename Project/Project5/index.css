@@ -1,0 +1,54 @@
+body {
+  background-color: #f1f1f1;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+
+}
+
+h1{
+    font-size: 2rem;
+    text-align: center;
+    padding-top: 100px;
+
+}
+p{
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: .5rem;
+    
+}
+.buttons{
+    display: flex;
+    justify-content: center;
+    border: none;
+}
+button{
+    border: none;
+    font-size: 3rem;
+    margin: 0 .5rem;
+    padding: 0.5rem ;
+    cursor: pointer;
+    /* background-color: blueviolet; */
+    border-radius: 5px;
+    transition: all .3s ease-in-out;
+
+}
+button:hover{
+    opacity: 0.7;
+}
+#rock{
+    background-color: red;
+}
+#paper{
+    background-color: blue;
+}
+#scissor{
+    background-color: green;
+}
+#user-score{
+    color: blue;
+}
+#computer-score{
+    color: red;
+}
