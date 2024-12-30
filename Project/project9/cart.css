@@ -1,0 +1,15 @@
+#cart{
+text-align: center;
+margin: auto;
+}
+
+#cart>div{
+    width: 300px;
+    margin: auto;
+    margin-top: 150px;
+   border-radius: 5px;
+   padding: 20px;
+   background-color: #f7f7f7;
+    box-shadow: 5px 2px 5px rgba(0 , 0 , 0 , 0.3);
+}
+

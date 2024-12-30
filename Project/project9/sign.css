@@ -1,0 +1,43 @@
+#signin{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin: auto;
+    box-shadow: 5px 2px 5px rgba(0 ,0,0,0.3);
+    margin-top: 100px;
+    background-color: #f7f7f7;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 50px 50px 20px;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+form>label{
+    font-weight: bold;
+    font-size: 18px;
+   
+}
+form>input{
+    width: 100%;
+  padding: 0px 15px;
+    height: 30px;
+}
+.form>input:placeholder{
+    font-weight: normal;
+    padding-left: 20px;
+}
+button{
+    width: 100%;
+    margin-left: 18px;
+    text-align: center;
+    padding: 8px 20px;
+    border: none;
+    background-color: rgb(32, 129, 129);
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+font-size: 15px;
+}
+button:hover{
+    filter: brightness(0.8);
+}

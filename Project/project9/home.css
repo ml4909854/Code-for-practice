@@ -1,0 +1,151 @@
+.dropdown-bar {
+  width: 80px;
+  padding: 10px 0px;
+  background-color: #0f827c;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  box-sizing: border-box;
+  transition: all;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  color: black;
+  display: none;
+  position: absolute;
+  width: 100px;
+  background-color: white;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  justify-content: left;
+  padding: 20px 10px;
+  box-sizing: border-box;
+  align-items: center;
+}
+
+.dropdown-content a {
+  color: black;
+  display: block;
+  margin: 5px 0px;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropdown-content a:hover {
+  background-color: #ddd;
+  width: 100%;
+}
+.shopping-div {
+  width: 100%;
+  background-color: #0f827c;
+}
+
+/* code for slider */
+
+/* #sliderContainer{
+    width: 100%;
+    height: 400px;
+    justify-content: center;
+    border: 1px solid black;
+} */
+#slideImage {
+  width: 100%;
+  height: 450px;
+  box-shadow: 5px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+#sliderImageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px;
+  margin-top:47px;
+}
+
+#nextBtn,
+#prevBtn {
+  position: absolute;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 30px;
+  color: white;
+}
+#nextBtn {
+  right: 40px;
+}
+#prevBtn {
+  left: 40px;
+}
+
+#nextBtn:hover,
+#prevBtn:hover{
+    filter: brightness(0.2);
+}
+
+#dotsContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 40px;
+  gap: 10px;
+}
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid gray;
+}
+.active {
+  background-color: rgb(176, 176, 176);
+}
+
+
+/* Css for the product section */
+
+#products{
+    margin-top: 100px;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(4 , 1fr);
+    gap: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#products>div{
+    box-shadow: 2px 1px 4px rgba(0 , 0 , 0, 0.3);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+#products>div >div{
+display: flex;
+justify-content: center;
+gap: 15px;
+align-items: center;
+}
+
+
+.add{
+box-sizing: border-box;
+margin-top: 10px;
+width: 150px;
+padding: 10px 20px;
+border: none;
+background-color: rgb(204, 25, 25);
+border-radius: 5px;
+cursor: pointer;
+
+}
