@@ -1,0 +1,41 @@
+/* Basic Reset */
+body, h1, p, a, form {
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background: #f4f4f4;
+    color: #333;
+  }
+  
+  header {
+    background: #007bff;
+    color: white;
+    padding: 10px 20px;
+  }
+  
+  nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+  }
+  
+  nav a:active {
+    text-decoration: underline;
+    color: red;
+  }
+  
+  main {
+    padding: 20px;
+    background: white;
+    border: 1px solid #ddd;
+    margin: 20px auto;
+    width: 80%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+  }
+  
