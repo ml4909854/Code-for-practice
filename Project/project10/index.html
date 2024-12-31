@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+</head>
+<style>
+    body{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    #container{
+        width: 100%;
+        height: 50px;
+        background-color: aquamarine;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        gap: 400px;
+    }
+    a{
+        text-decoration: none;
+        color: black;
+        font-size: 18px;
+        cursor: pointer;
+    }
+
+    #productsContainer{
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(4 , 1fr);
+        gap: 10px;
+    }
+    #productsContainer>div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    box-shadow: 5px 2px 5px rgba(0 , 0 , 0, 0.3);
+    }
+
+</style>
+<body>
+    <div id="container">
+    <a href="index.html">Home page</a>
+    <a href="cart.html">Cart</a>
+</div>
+<div>
+    <h1>Welcome to the Home page</h1>
+</div>
+
+<div id="productsContainer">
+
+</div>
+<script src="index.js"></script>
+</body>
+</html>

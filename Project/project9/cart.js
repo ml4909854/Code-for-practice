@@ -55,11 +55,11 @@ function renderCart() {
 
 // Remove item from cart
 function removeFromCart(itemId) {
-    if (cart[itemId]) {
+    
         delete cart[itemId]; // Delete item from cart object
         localStorage.setItem("cart", JSON.stringify(cart)); // Update localStorage
         renderCart(); // Re-render the cart
-    }
+    
 }
 
 // Initial render of cart
