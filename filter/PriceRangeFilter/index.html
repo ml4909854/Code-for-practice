@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #productlist {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+
+    #productlist>div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+</style>
+
+<body>
+    <h1>Price Range Filter</h1>
+    <label><input type="checkbox" value="below100" class="checkbox">Below 100</label><br>
+    <label><input type="checkbox" value="below200" class="checkbox">Below 200</label><br>
+    <label><input type="checkbox" value="above500" class="checkbox">Above 500</label><br>
+    <label><input type="checkbox" value="above1000" class="checkbox">Above 1000</label><br>
+    <button id="filter">Filter</button>
+
+    <div id="productlist">
+
+    </div>
+    <script>
+        let productlist = document.getElementById("productlist")
+        let filter = document.getElementById("filter")
+        let checkboxes = document.querySelectorAll(".checkbox")
+
+        let getdata = async () => {
+            let response = await fetch("https://fakestoreapi.com/products")
+            let data = await response.json()
+            showData(data)
+            priceRange(data)
+        }
+
+        function showData(products) {
+            productlist.innerHTML = ''; // Clear previous products before displaying new ones
+            products.forEach((product) => {
+                let div = document.createElement("div")
+
+                let p1 = document.createElement("p")
+                p1.innerHTML = product.title
+
+                let price = document.createElement("p")
+                price.innerHTML = product.price
+
+                div.append(p1, price)
+                productlist.append(div)
+            })
+        }
+
+        getdata()
+
+        function priceRange(products) {
+            filter.addEventListener("click", function () {
+                let filterproducts = []
+                checkboxes.forEach((checkbox) => {
+                    if (checkbox.checked) {
+                        let filter = []
+
+                        if (checkbox.value === "below100") {
+                            filter = products.filter((product) => product.price < 100)
+                        }
+                        if (checkbox.value === "below200") {
+                            filter = products.filter((product) => product.price < 200)
+                        }
+                        if (checkbox.value === "above500") {
+                            filter = products.filter((product) => product.price > 500)
+                        }
+                        if (checkbox.value === "above1000") {
+                            filter = products.filter((product) => product.price > 1000)
+                        }
+                        
+                        // Merging filtered products
+                        filterproducts = [...new Set([...filterproducts, ...filter])]
+                    }
+                })
+
+                // Show filtered data or show a message if no products match
+                if (filterproducts.length > 0) {
+                    showData(filterproducts)
+                } else {
+                    productlist.innerHTML = "No products match the selected price range."
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>
