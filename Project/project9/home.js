@@ -79,7 +79,7 @@ createDots()
 
 
 const products = document.getElementById("products");
-let cart = JSON.parse(localStorage.getItem("cart")) || {};
+let cart =  {};
 
 // Fetch products and display them
 async function getData() {
