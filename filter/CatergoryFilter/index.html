@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category Filters</title>
+</head>
+
+<body>
+    <style>
+        .product {
+            margin: 10px 0px;
+        }
+        #productList {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 20px;
+        }
+        #productList > div {
+            border: 1px solid black;
+            box-shadow: 5px 2px 5px rgba(0, 0, 0, 0.3);
+            background-color: aliceblue;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+    </style>
+
+    <h1>Category Filter</h1>
+    <label for="category">Select category:</label>
+    <select id="category">
+        <option value="all">All</option>
+        <option value="electronics">Electronics</option>
+        <option value="clothing">Clothing</option>
+        <option value="furniture">Furniture</option>
+    </select>
+
+    <div id="productList"></div>
+
+    <script>
+        const productList = document.getElementById("productList");
+        const category = document.getElementById("category");
+
+        let products = [
+            { name: "sofa", category: "furniture" },
+            { name: "laptop", category: "electronics" },
+            { name: "mobile", category: "electronics" },
+            { name: "shirt", category: "clothing" },
+            { name: "stool", category: "furniture" },
+            { name: "bra", category: "clothing" },
+        ];
+
+        // Function to display products
+        function displayProducts(productArray) {
+            productList.innerHTML = ""; // Clear existing products
+
+            productArray.forEach((item, index) => {
+                let div = document.createElement("div");
+                let id = document.createElement("p");
+                id.innerHTML = `Id: ${index}`;
+                let name = document.createElement("p");
+                name.innerHTML = `Name: ${item.name}`;
+                let category = document.createElement("p");
+                category.innerHTML = `Category: ${item.category}`;
+
+                div.append(id, name, category);
+                productList.append(div);
+            });
+        }
+
+        // Initial display with all products
+        displayProducts(products);
+
+        // Filter products based on selected category
+        category.addEventListener("change", function () {
+            let selectedValue = category.value;
+
+            // Filter logic
+            let filteredProducts = selectedValue === "all" ? products : products.filter((product) => product.category === selectedValue);
+
+            // Display the filtered products
+            displayProducts(filteredProducts);
+        });
+    </script>
+</body>
+
+</html>
